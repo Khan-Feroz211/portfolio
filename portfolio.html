@@ -1,0 +1,1227 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feroz Khan | Developer 🇵🇰</title>
+    
+    <!-- Fonts & Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ===== ENHANCED STYLES ===== */
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #8b5cf6;
+            --dark: #0f172a;
+            --light: #f8fafc;
+            --gray: #64748b;
+            --success: #10b981;
+            --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background: #ffffff;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* ===== NAVBAR ===== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+        
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo .flag {
+            font-size: 1.5rem;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 8px 0;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        /* ===== HERO SECTION ===== */
+        .hero {
+            padding: 160px 0 80px;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(37, 99, 235, 0.05)"/></svg>');
+            background-size: cover;
+        }
+        
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-text h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+        
+        .hero-text h2 {
+            font-size: 1.5rem;
+            color: var(--gray);
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+        }
+        
+        .highlight {
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            left: 0;
+            width: 100%;
+            height: 30%;
+            background: rgba(37, 99, 235, 0.15);
+            z-index: -1;
+            border-radius: 4px;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px 32px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 50px;
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+        }
+        
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary);
+            border-color: var(--primary);
+        }
+        
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        /* Code Window */
+        .code-window {
+            background: var(--dark);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+            transform: perspective(1000px) rotateY(-10deg);
+            transition: transform 0.5s ease;
+        }
+        
+        .code-window:hover {
+            transform: perspective(1000px) rotateY(-5deg);
+        }
+        
+        .window-header {
+            background: #1e293b;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        
+        .dot.red { background: #ef4444; }
+        .dot.yellow { background: #f59e0b; }
+        .dot.green { background: #10b981; }
+        
+        .window-title {
+            color: #94a3b8;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            margin-left: 15px;
+            flex: 1;
+        }
+        
+        .code-content {
+            padding: 2.5rem;
+            overflow-x: auto;
+        }
+        
+        .code-content pre {
+            margin: 0;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        .code-content code {
+            font-family: 'Courier New', monospace;
+            color: #e2e8f0;
+        }
+        
+        .code-content .keyword { color: #ff79c6; }
+        .code-content .string { color: #f1fa8c; }
+        .code-content .function { color: #50fa7b; }
+        .code-content .comment { color: #6272a4; }
+        
+        /* ===== SECTIONS ===== */
+        .section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+        
+        .bg-light {
+            background: var(--light);
+        }
+        
+        /* ===== GITHUB PROJECTS SECTION ===== */
+        .github-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: white;
+            position: relative;
+        }
+        
+        .github-section .section-title {
+            color: white;
+        }
+        
+        .github-section .section-title::after {
+            background: white;
+        }
+        
+        /* Stats Cards */
+        .github-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            margin: 50px 0;
+        }
+        
+        .stat-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 30px 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--primary);
+            box-shadow: 0 15px 30px rgba(37, 99, 235, 0.2);
+        }
+        
+        .stat-card i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .stat-card h3 {
+            font-size: 2.5rem;
+            margin: 15px 0;
+            font-weight: 700;
+        }
+        
+        /* GitHub Widgets */
+        .github-widgets {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+        
+        .widget {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 25px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .widget h4 {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+        
+        .widget h4 i {
+            color: var(--primary);
+        }
+        
+        .widget img {
+            width: 100%;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .project-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 25px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 0 20px 40px rgba(37, 99, 235, 0.2);
+        }
+        
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+        
+        .project-name {
+            color: white;
+            font-size: 1.3rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .project-name:hover {
+            color: var(--primary);
+        }
+        
+        .project-stats {
+            display: flex;
+            gap: 15px;
+            font-size: 0.9rem;
+        }
+        
+        .project-stat {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .project-stat i {
+            color: var(--primary);
+        }
+        
+        .project-description {
+            color: rgba(255, 255, 255, 0.8);
+            margin: 15px 0;
+            flex-grow: 1;
+            line-height: 1.6;
+        }
+        
+        .project-language {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #60a5fa;
+            font-size: 0.9rem;
+            margin: 10px 0;
+        }
+        
+        .project-language::before {
+            content: '';
+            width: 10px;
+            height: 10px;
+            background: currentColor;
+            border-radius: 50%;
+        }
+        
+        .project-topics {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 15px;
+        }
+        
+        .project-topic {
+            background: rgba(37, 99, 235, 0.15);
+            color: #60a5fa;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        /* Loading State */
+        .loading {
+            text-align: center;
+            padding: 60px;
+            color: rgba(255, 255, 255, 0.7);
+            grid-column: 1 / -1;
+        }
+        
+        .loading i {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* ===== SKILLS SECTION ===== */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .skill-category {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .skill-category:hover {
+            transform: translateY(-10px);
+        }
+        
+        .skill-category h3 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .skill-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .skill-tag {
+            background: #e2e8f0;
+            padding: 10px 18px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--dark);
+            transition: all 0.3s ease;
+        }
+        
+        .skill-tag:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .skill-tag.learning {
+            background: rgba(37, 99, 235, 0.1);
+            color: var(--primary);
+            border: 2px dashed var(--primary);
+        }
+        
+        .skill-tag.completed {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--success);
+            border: 2px solid var(--success);
+        }
+        
+        /* ===== CONTACT SECTION ===== */
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 25px;
+            margin-top: 40px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: var(--dark);
+            text-decoration: none;
+            font-size: 1.1rem;
+            padding: 15px 25px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            min-width: 300px;
+            max-width: 400px;
+            width: 100%;
+        }
+        
+        .contact-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            color: var(--primary);
+        }
+        
+        .contact-item i {
+            font-size: 1.5rem;
+            color: var(--primary);
+            width: 30px;
+        }
+        
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-logo {
+            text-align: left;
+        }
+        
+        .footer-logo h3 {
+            color: white;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 992px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .code-window {
+                transform: none;
+                max-width: 600px;
+                margin: 0 auto;
+            }
+            
+            .code-window:hover {
+                transform: translateY(-10px);
+            }
+            
+            .hero-text h1 {
+                font-size: 2.8rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero {
+                padding: 140px 0 60px;
+            }
+            
+            .hero-text h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero-text h2 {
+                font-size: 1.2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .github-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .github-widgets {
+                grid-template-columns: 1fr;
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="#home" class="logo">
+                <span>Feroz Khan</span>
+                <span class="flag">🇵🇰</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#github">GitHub Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Hello, I'm <span class="highlight">Feroz Khan</span></h1>
+                    <h2>Developer from Pakistan 🇵🇰</h2>
+                    <p>
+                        Passionate about building digital solutions with clean code and modern design. 
+                        Currently exploring web development, open source, and continuously learning new technologies.
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="#github" class="btn btn-primary">
+                            <i class="fab fa-github"></i> View My Projects
+                        </a>
+                        <a href="#contact" class="btn btn-secondary">
+                            <i class="fas fa-paper-plane"></i> Get in Touch
+                        </a>
+                    </div>
+                </div>
+                <div class="code-window">
+                    <div class="window-header">
+                        <span class="dot red"></span>
+                        <span class="dot yellow"></span>
+                        <span class="dot green"></span>
+                        <span class="window-title">profile.js</span>
+                    </div>
+                    <div class="code-content">
+                        <pre><code><span class="keyword">const</span> <span class="function">developer</span> = {
+    <span class="keyword">name</span>: <span class="string">"Feroz Khan"</span>,
+    <span class="keyword">country</span>: <span class="string">"Pakistan"</span>,
+    <span class="keyword">skills</span>: [<span class="string">"HTML"</span>, <span class="string">"CSS"</span>, <span class="string">"JavaScript"</span>, <span class="string">"Git"</span>],
+    <span class="keyword">learning</span>: [<span class="string">"React"</span>, <span class="string">"Node.js"</span>, <span class="string">"Python"</span>],
+    <span class="keyword">motto</span>: <span class="string">"Code → Learn → Build → Repeat"</span>,
+    <span class="keyword">status</span>: <span class="string">"Active & Learning"</span>
+};
+
+<span class="comment">// Always building, always learning</span>
+console.<span class="function">log</span>(<span class="string">"Let's build something amazing! 🇵🇰"</span>);</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+        <div class="container">
+            <h2 class="section-title">My <span class="highlight">Skills</span></h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3><i class="fas fa-code"></i> Web Development</h3>
+                    <div class="skill-items">
+                        <span class="skill-tag completed">HTML5</span>
+                        <span class="skill-tag completed">CSS3</span>
+                        <span class="skill-tag completed">JavaScript</span>
+                        <span class="skill-tag completed">Git</span>
+                        <span class="skill-tag completed">GitHub</span>
+                        <span class="skill-tag learning">React</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3><i class="fas fa-server"></i> Backend & Tools</h3>
+                    <div class="skill-items">
+                        <span class="skill-tag learning">Node.js</span>
+                        <span class="skill-tag learning">Python</span>
+                        <span class="skill-tag learning">MongoDB</span>
+                        <span class="skill-tag completed">VS Code</span>
+                        <span class="skill-tag completed">Figma</span>
+                        <span class="skill-tag completed">Postman</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3><i class="fas fa-graduation-cap"></i> Currently Learning</h3>
+                    <div class="skill-items">
+                        <span class="skill-tag learning">React Native</span>
+                        <span class="skill-tag learning">Express.js</span>
+                        <span class="skill-tag learning">TypeScript</span>
+                        <span class="skill-tag learning">Docker</span>
+                        <span class="skill-tag learning">AWS</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GitHub Projects Section -->
+    <section id="github" class="github-section">
+        <div class="container">
+            <h2 class="section-title">My <span class="highlight">GitHub</span> Projects</h2>
+            
+            <!-- GitHub Stats -->
+            <div class="github-stats">
+                <div class="stat-card">
+                    <i class="fas fa-code-branch"></i>
+                    <h3 id="repo-count">0</h3>
+                    <p>Public Repositories</p>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-star"></i>
+                    <h3 id="star-count">0</h3>
+                    <p>Total Stars</p>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-code-fork"></i>
+                    <h3 id="fork-count">0</h3>
+                    <p>Total Forks</p>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-users"></i>
+                    <h3 id="follower-count">0</h3>
+                    <p>GitHub Followers</p>
+                </div>
+            </div>
+            
+            <!-- GitHub Widgets -->
+            <div class="github-widgets">
+                <div class="widget">
+                    <h4><i class="fas fa-chart-line"></i> Activity Stats</h4>
+                    <img src="https://github-readme-stats.vercel.app/api?username=Khan-Feroz211&show_icons=true&theme=radical&hide_border=true&bg_color=0d1117&title_color=58a6ff&icon_color=1f6feb" 
+                         alt="GitHub Stats" loading="lazy">
+                </div>
+                <div class="widget">
+                    <h4><i class="fas fa-code"></i> Top Languages</h4>
+                    <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Khan-Feroz211&layout=compact&theme=radical&hide_border=true&bg_color=0d1117&title_color=58a6ff"
+                         alt="Top Languages" loading="lazy">
+                </div>
+                <div class="widget">
+                    <h4><i class="fas fa-fire"></i> Contribution Streak</h4>
+                    <img src="https://streak-stats.demolab.com/?user=Khan-Feroz211&theme=radical&hide_border=true&background=0D1117&ring=58a6ff&fire=1f6feb&currStreakLabel=58a6ff"
+                         alt="GitHub Streak" loading="lazy">
+                </div>
+            </div>
+            
+            <!-- ALL GitHub Projects -->
+            <div class="projects-grid" id="projects-container">
+                <!-- Projects will be loaded here from GitHub API -->
+                <div class="loading">
+                    <i class="fas fa-spinner"></i>
+                    <p>Loading all GitHub projects...</p>
+                </div>
+            </div>
+            
+            <!-- GitHub Profile Link -->
+            <div style="text-align: center; margin-top: 50px;">
+                <a href="https://github.com/Khan-Feroz211" target="_blank" class="btn btn-primary" style="background: #24292e; border-color: #24292e;">
+                    <i class="fab fa-github"></i> View Full GitHub Profile
+                </a>
+                <p style="color: rgba(255, 255, 255, 0.7); margin-top: 15px;">
+                    All my projects, contributions, and coding activity
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">Get In <span class="highlight">Touch</span></h2>
+            <p style="text-align: center; margin-bottom: 3rem; font-size: 1.1rem; color: var(--gray);">
+                Feel free to reach out for collaborations, opportunities, or just to say hello!
+            </p>
+            
+            <div class="contact-info">
+                <a href="mailto:www.ferozuddin405@gmail.com" class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>www.ferozuddin405@gmail.com</span>
+                </a>
+                
+                <a href="https://github.com/Khan-Feroz211" target="_blank" class="contact-item">
+                    <i class="fab fa-github"></i>
+                    <span>github.com/Khan-Feroz211</span>
+                </a>
+                
+                <a href= class="contact-item" id="linkedin-item">
+                    <i class="fab fa-linkedin"></i>
+                    <span>Add your LinkedIn profile</span>
+                </a>
+                
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Pakistan 🇵🇰</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h3><i class="fas fa-code"></i> Feroz Khan</h3>
+                    <p style="color: rgba(255, 255, 255, 0.7);">Building the future with code</p>
+                </div>
+                
+                <div class="social-links">
+                    <a href="https://github.com/Khan-Feroz211" target="_blank" title="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href= title="LinkedIn" id="linkedin-btn">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="mailto:www.ferozuddin405@gmail.com" title="Email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; <span id="currentYear"></span> Feroz Khan. All rights reserved.</p>
+                <p style="margin-top: 10px;">Proudly made in Pakistan 🇵🇰</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Update current year
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^=]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // LinkedIn Setup
+        const linkedinItem = document.getElementById('linkedin-item');
+        const linkedinBtn = document.getElementById('linkedin-btn');
+        
+        function setupLinkedIn() {
+            const linkedinUrl = localStorage.getItem('feroz_linkedin');
+            if (linkedinUrl) {
+                // Update links
+                linkedinItem.href = linkedinUrl;
+                linkedinItem.innerHTML = '<i class="fab fa-linkedin"></i><span>LinkedIn Profile</span>';
+                linkedinBtn.href = linkedinUrl;
+            } else {
+                // Add click to set LinkedIn
+                linkedinItem.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const url = prompt('Enter your LinkedIn profile URL:');
+                    if (url) {
+                        localStorage.setItem('feroz_linkedin', url);
+                        setupLinkedIn();
+                        alert('LinkedIn URL saved!');
+                    }
+                });
+                linkedinBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const url = prompt('Enter your LinkedIn profile URL:');
+                    if (url) {
+                        localStorage.setItem('feroz_linkedin', url);
+                        setupLinkedIn();
+                        alert('LinkedIn URL saved!');
+                    }
+                });
+            }
+        }
+        
+        setupLinkedIn();
+        
+        // ===== GITHUB API INTEGRATION =====
+        const username = 'Khan-Feroz211';
+        const projectsContainer = document.getElementById('projects-container');
+        
+        async function loadGitHubData() {
+            try {
+                // 1. Fetch user data
+                const userResponse = await fetch(`https://api.github.com/users/${username}`);
+                const userData = await userResponse.json();
+                
+                // Update stats
+                document.getElementById('repo-count').textContent = userData.public_repos || '0';
+                document.getElementById('follower-count').textContent = userData.followers || '0';
+                
+                // 2. Fetch repositories
+                const reposResponse = await fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=100`);
+                const reposData = await reposResponse.json();
+                
+                // Calculate stars and forks
+                let totalStars = 0;
+                let totalForks = 0;
+                reposData.forEach(repo => {
+                    totalStars += repo.stargazers_count || 0;
+                    totalForks += repo.forks_count || 0;
+                });
+                
+                document.getElementById('star-count').textContent = totalStars;
+                document.getElementById('fork-count').textContent = totalForks;
+                
+                // 3. Display projects
+                displayProjects(reposData);
+                
+            } catch (error) {
+                console.error('Error loading GitHub data:', error);
+                projectsContainer.innerHTML = `
+                    <div class="loading" style="grid-column: 1 / -1;">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <p>Unable to load GitHub projects. Please check your connection.</p>
+                        <a href="https://github.com/Khan-Feroz211" target="_blank" class="btn btn-primary" style="margin-top: 20px;">
+                            <i class="fab fa-github"></i> View on GitHub
+                        </a>
+                    </div>
+                `;
+            }
+        }
+        
+        function displayProjects(repos) {
+            // Remove loading spinner
+            projectsContainer.innerHTML = '';
+            
+            // Sort by stars (most popular first)
+            const sortedRepos = [...repos].sort((a, b) => b.stargazers_count - a.stargazers_count);
+            
+            // Display each project
+            sortedRepos.forEach(repo => {
+                const projectCard = document.createElement('div');
+                projectCard.className = 'project-card';
+                
+                // Format description
+                const description = repo.description || 'No description provided';
+                const truncatedDescription = description.length > 120 
+                    ? description.substring(0, 120) + '...' 
+                    : description;
+                
+                // Format topics
+                const topics = repo.topics || [];
+                const topicsHtml = topics.length > 0 
+                    ? `<div class="project-topics">${topics.slice(0, 3).map(topic => 
+                        `<span class="project-topic">${topic}</span>`
+                    ).join('')}</div>` 
+                    : '';
+                
+                // Language color mapping
+                const languageColors = {
+                    'JavaScript': '#f1e05a',
+                    'HTML': '#e34c26',
+                    'CSS': '#563d7c',
+                    'Python': '#3572A5',
+                    'Java': '#b07219',
+                    'TypeScript': '#2b7489',
+                    'C++': '#f34b7d',
+                    'C#': '#178600',
+                    'PHP': '#4F5D95',
+                    'Ruby': '#701516'
+                };
+                
+                const languageColor = languageColors[repo.language] || '#58a6ff';
+                
+                projectCard.innerHTML = `
+                    <div class="project-header">
+                        <a href="${repo.html_url}" target="_blank" class="project-name">
+                            <i class="fas fa-code-branch"></i> ${repo.name}
+                        </a>
+                        <div class="project-stats">
+                            <span class="project-stat">
+                                <i class="fas fa-star"></i> ${repo.stargazers_count}
+                            </span>
+                            <span class="project-stat">
+                                <i class="fas fa-code-fork"></i> ${repo.forks_count}
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <p class="project-description">${truncatedDescription}</p>
+                    
+                    ${repo.language ? `
+                        <div class="project-language" style="color: ${languageColor}">
+                            ${repo.language}
+                        </div>
+                    ` : ''}
+                    
+                    ${topicsHtml}
+                    
+                    <div style="margin-top: auto; padding-top: 20px;">
+                        <a href="${repo.html_url}" target="_blank" class="btn btn-secondary" style="padding: 10px 20px; width: 100%; justify-content: center; background: rgba(255, 255, 255, 0.1); border-color: rgba(255, 255, 255, 0.2);">
+                            <i class="fab fa-github"></i> View Repository
+                        </a>
+                    </div>
+                `;
+                
+                projectsContainer.appendChild(projectCard);
+            });
+            
+            // Show message if no repos
+            if (sortedRepos.length === 0) {
+                projectsContainer.innerHTML = `
+                    <div class="loading" style="grid-column: 1 / -1;">
+                        <i class="fas fa-folder-open"></i>
+                        <p>No public repositories found.</p>
+                    </div>
+                `;
+            }
+        }
+        
+        // Load GitHub data when page loads
+        document.addEventListener('DOMContentLoaded', loadGitHubData);
+        
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.boxShadow = '0 5px 20px rgba(0,0,0,0.1)';
+                navbar.style.padding = '0.8rem 0';
+            } else {
+                navbar.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+                navbar.style.padding = '1rem 0';
+            }
+        });
+        
+        // Add animation to skill tags on hover
+        document.addEventListener('DOMContentLoaded', function() {
+            const skillTags = document.querySelectorAll('.skill-tag');
+            skillTags.forEach(tag => {
+                tag.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px) scale(1.05)';
+                });
+                tag.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+        });
+        
+        // Parallax effect for hero section
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            if (hero) {
+                hero.style.backgroundPositionY = scrolled * 0.5 + 'px';
+            }
+        });
+    </script>
+
+<!-- LinkedIn Profile - Added -->
+<div style="text-align: center; padding: 40px; background: #1e293b; margin-top: 50px;">
+    <h3 style="color: white; margin-bottom: 20px;">Connect on LinkedIn</h3>
+    <a href="https://www.linkedin.com/in/feroz-u-din-26648839b/" 
+       target="_blank"
+       style="background: #0077b5; color: white; padding: 12px 24px; border-radius: 5px; text-decoration: none; display: inline-block;">
+        <i class="fab fa-linkedin"></i> LinkedIn Profile
+    </a>
+    <p style="color: #94a3b8; margin-top: 15px;">
+        Professional network for ML & AI opportunities
+    </p>
+</div>
+</body>
+</html>
+
+

@@ -1,0 +1,654 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feroz Khan | ML Engineer & Developer 🇵🇰</title>
+    
+    <!-- Fonts & Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ===== BASE STYLES ===== */
+        :root {
+            --primary: #10b981;
+            --primary-dark: #059669;
+            --primary-light: #34d399;
+            --secondary: #3b82f6;
+            --linkedin: #0077b5;
+            --github: #24292e;
+            --dark: #0f172a;
+            --darker: #020617;
+            --light: #f8fafc;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--light);
+            background: var(--dark);
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* ===== HERO SECTION ===== */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--dark) 0%, var(--darker) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .hero-content h2 {
+            font-size: 1.5rem;
+            color: #94a3b8;
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 28px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 50px;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .btn-linkedin {
+            background: var(--linkedin);
+            color: white;
+        }
+        
+        .btn-github {
+            background: var(--github);
+            color: white;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* ===== GITHUB SECTION ===== */
+        .github-section {
+            padding: 80px 0;
+            background: var(--darker);
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: white;
+        }
+        
+        .github-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            margin: 50px 0;
+        }
+        
+        .stat-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            border-radius: 16px;
+            padding: 30px 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+        }
+        
+        .stat-card i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .stat-card h3 {
+            font-size: 2.5rem;
+            margin: 15px 0;
+            font-weight: 700;
+        }
+        
+        /* GitHub Widgets with FALLBACK */
+        .github-widgets {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+        
+        .widget {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 25px;
+        }
+        
+        .widget h4 {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: white;
+            margin-bottom: 20px;
+        }
+        
+        .widget h4 i {
+            color: var(--primary);
+        }
+        
+        .widget img {
+            width: 100%;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .project-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 25px;
+            transition: all 0.3s ease;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 60px;
+            color: rgba(255, 255, 255, 0.7);
+            grid-column: 1 / -1;
+        }
+        
+        .loading i {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* ===== CONTACT SECTION ===== */
+        .contact-section {
+            padding: 80px 0;
+            background: var(--dark);
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 25px;
+            margin-top: 40px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            padding: 20px 30px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            min-width: 300px;
+            max-width: 400px;
+            width: 100%;
+        }
+        
+        .contact-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            background: rgba(16, 185, 129, 0.1);
+        }
+        
+        .contact-item i {
+            font-size: 1.8rem;
+            color: var(--primary);
+            width: 40px;
+        }
+        
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--darker);
+            padding: 60px 0 30px;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 40px 0;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            transform: translateY(-5px);
+        }
+        
+        .social-links .linkedin:hover { background: var(--linkedin); }
+        .social-links .github:hover { background: var(--github); }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 2.5rem; }
+            .section-title { font-size: 2rem; }
+            .github-widgets { grid-template-columns: 1fr; }
+            .projects-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Feroz Khan</h1>
+                <h2>Machine Learning Engineer & Developer from Pakistan 🇵🇰</h2>
+                <p style="max-width: 600px; margin: 0 auto; color: #94a3b8; line-height: 1.8;">
+                    Building intelligent systems with Machine Learning, Deep Learning, and modern AI technologies.
+                </p>
+                
+                <div class="hero-buttons">
+                    <a href="#github" class="btn btn-primary">
+                        <i class="fab fa-github"></i> GitHub Projects
+                    </a>
+                    <a href="#contact" class="btn btn-linkedin">
+                        <i class="fab fa-linkedin"></i> Connect
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GitHub Projects Section -->
+    <section id="github" class="github-section">
+        <div class="container">
+            <h2 class="section-title">GitHub <span style="color: var(--primary);">Projects</span></h2>
+            
+            <!-- GitHub Stats -->
+            <div class="github-stats">
+                <div class="stat-card">
+                    <i class="fas fa-code-branch"></i>
+                    <h3 id="repo-count">...</h3>
+                    <p>Public Repositories</p>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-star"></i>
+                    <h3 id="star-count">...</h3>
+                    <p>Total Stars</p>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-code-fork"></i>
+                    <h3 id="fork-count">...</h3>
+                    <p>Total Forks</p>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-users"></i>
+                    <h3 id="follower-count">...</h3>
+                    <p>GitHub Followers</p>
+                </div>
+            </div>
+            
+            <!-- GitHub Widgets - FIXED URLs -->
+            <div class="github-widgets">
+                <div class="widget">
+                    <h4><i class="fas fa-chart-line"></i> Activity Stats</h4>
+                    <img src="https://github-readme-stats.vercel.app/api?username=Khan-Feroz211&show_icons=true&theme=dark&hide_border=true&bg_color=0d1117&title_color=10b981&icon_color=3b82f6" 
+                         alt="GitHub Stats">
+                </div>
+                <div class="widget">
+                    <h4><i class="fas fa-code"></i> Top Languages</h4>
+                    <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Khan-Feroz211&layout=compact&theme=dark&hide_border=true&bg_color=0d1117&title_color=10b981&hide=html,css"
+                         alt="Top Languages">
+                </div>
+                <div class="widget">
+                    <h4><i class="fas fa-fire"></i> Contribution Streak</h4>
+                    <img src="https://streak-stats.demolab.com?user=Khan-Feroz211&theme=dark&hide_border=true&background=0D1117&ring=10b981&fire=3b82f6&currStreakLabel=10b981"
+                         alt="GitHub Streak">
+                </div>
+            </div>
+            
+            <!-- GitHub Projects -->
+            <div class="projects-grid" id="projects-container">
+                <div class="loading">
+                    <i class="fas fa-spinner"></i>
+                    <p>Loading GitHub projects...</p>
+                </div>
+            </div>
+            
+            <!-- GitHub Profile Link -->
+            <div style="text-align: center; margin-top: 50px;">
+                <a href="https://github.com/Khan-Feroz211" target="_blank" class="btn btn-github">
+                    <i class="fab fa-github"></i> View Full GitHub Profile
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2 class="section-title">Get In <span style="color: var(--primary);">Touch</span></h2>
+            
+            <div class="contact-info">
+                <!-- FIXED LINKEDIN URL - This will work -->
+                <a href="https://www.linkedin.com/in/feroz-u-din-26648839b" 
+                   target="_blank" 
+                   class="contact-item">
+                    <i class="fab fa-linkedin"></i>
+                    <div>
+                        <strong>LinkedIn</strong>
+                        <span>Feroz U Din</span>
+                    </div>
+                </a>
+                
+                <a href="https://github.com/Khan-Feroz211" 
+                   target="_blank" 
+                   class="contact-item">
+                    <i class="fab fa-github"></i>
+                    <div>
+                        <strong>GitHub</strong>
+                        <span>Khan-Feroz211</span>
+                    </div>
+                </a>
+                
+                <a href="mailto:www.ferozuddin405@gmail.com" 
+                   class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <strong>Email</strong>
+                        <span>www.ferozuddin405@gmail.com</span>
+                    </div>
+                </a>
+                
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <strong>Location</strong>
+                        <span>Pakistan 🇵🇰</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <h3 style="color: white; margin-bottom: 20px;">Connect With Me</h3>
+            
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/feroz-u-din-26648839b" 
+                   target="_blank" 
+                   class="linkedin"
+                   title="LinkedIn">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://github.com/Khan-Feroz211" 
+                   target="_blank" 
+                   class="github"
+                   title="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="mailto:www.ferozuddin405@gmail.com" 
+                   class="email"
+                   title="Email">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
+            
+            <div class="footer-bottom" style="margin-top: 40px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1);">
+                <p>&copy; <span id="currentYear"></span> Feroz Khan. All rights reserved.</p>
+                <p style="margin-top: 10px; color: #94a3b8;">Proudly made in Pakistan 🇵🇰</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript with FIXES -->
+    <script>
+        // Update current year
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        
+        // ===== FIXED GITHUB API INTEGRATION =====
+        const username = 'Khan-Feroz211';
+        const projectsContainer = document.getElementById('projects-container');
+        
+        async function loadGitHubData() {
+            try {
+                console.log('Loading GitHub data...');
+                
+                // 1. Fetch user data
+                const userResponse = await fetch(`https://api.github.com/users/${username}`, {
+                    headers: {
+                        'Accept': 'application/vnd.github.v3+json'
+                    }
+                });
+                
+                if (userResponse.ok) {
+                    const userData = await userResponse.json();
+                    
+                    // Update stats with REAL data
+                    document.getElementById('repo-count').textContent = userData.public_repos || '0';
+                    document.getElementById('follower-count').textContent = userData.followers || '0';
+                    
+                    // 2. Fetch repositories
+                    const reposResponse = await fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=100`, {
+                        headers: {
+                            'Accept': 'application/vnd.github.v3+json'
+                        }
+                    });
+                    
+                    if (reposResponse.ok) {
+                        const reposData = await reposResponse.json();
+                        
+                        // Calculate REAL stars and forks
+                        let totalStars = 0;
+                        let totalForks = 0;
+                        reposData.forEach(repo => {
+                            totalStars += repo.stargazers_count || 0;
+                            totalForks += repo.forks_count || 0;
+                        });
+                        
+                        document.getElementById('star-count').textContent = totalStars;
+                        document.getElementById('fork-count').textContent = totalForks;
+                        
+                        // Display REAL projects
+                        displayProjects(reposData);
+                    } else {
+                        showFallbackData();
+                    }
+                } else {
+                    showFallbackData();
+                }
+                
+            } catch (error) {
+                console.log('GitHub API error:', error);
+                showFallbackData();
+            }
+        }
+        
+        function displayProjects(repos) {
+            projectsContainer.innerHTML = '';
+            
+            if (!repos || repos.length === 0) {
+                showFallbackProjects();
+                return;
+            }
+            
+            // Show first 6 projects
+            const projectsToShow = repos.slice(0, 6);
+            
+            projectsToShow.forEach(repo => {
+                const projectCard = document.createElement('div');
+                projectCard.className = 'project-card';
+                
+                const description = repo.description || 'No description provided';
+                const truncatedDescription = description.length > 100 
+                    ? description.substring(0, 100) + '...' 
+                    : description;
+                
+                projectCard.innerHTML = `
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px;">
+                        <a href="${repo.html_url}" target="_blank" 
+                           style="color: white; font-size: 1.2rem; font-weight: 600; text-decoration: none;">
+                            <i class="fas fa-code-branch"></i> ${repo.name}
+                        </a>
+                        <div style="display: flex; gap: 12px; font-size: 0.9rem;">
+                            <span style="color: rgba(255, 255, 255, 0.7);">
+                                <i class="fas fa-star"></i> ${repo.stargazers_count || 0}
+                            </span>
+                            <span style="color: rgba(255, 255, 255, 0.7);">
+                                <i class="fas fa-code-fork"></i> ${repo.forks_count || 0}
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <p style="color: rgba(255, 255, 255, 0.8); margin: 15px 0; line-height: 1.6;">
+                        ${truncatedDescription}
+                    </p>
+                    
+                    ${repo.language ? `
+                        <div style="color: #60a5fa; margin: 10px 0; display: flex; align-items: center; gap: 8px;">
+                            <div style="width: 10px; height: 10px; background: currentColor; border-radius: 50%;"></div>
+                            ${repo.language}
+                        </div>
+                    ` : ''}
+                    
+                    <a href="${repo.html_url}" target="_blank" 
+                       style="display: block; padding: 10px; background: rgba(16, 185, 129, 0.1); 
+                              color: #10b981; border-radius: 8px; text-decoration: none; text-align: center; margin-top: 15px;">
+                        <i class="fab fa-github"></i> View Repository
+                    </a>
+                `;
+                
+                projectsContainer.appendChild(projectCard);
+            });
+        }
+        
+        function showFallbackData() {
+            // Show loading indicators
+            document.getElementById('repo-count').textContent = '...';
+            document.getElementById('star-count').textContent = '...';
+            document.getElementById('fork-count').textContent = '...';
+            document.getElementById('follower-count').textContent = '...';
+            
+            showFallbackProjects();
+        }
+        
+        function showFallbackProjects() {
+            projectsContainer.innerHTML = `
+                <div class="loading" style="grid-column: 1 / -1;">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <p>GitHub data temporarily unavailable</p>
+                    <p style="font-size: 0.9rem; margin-top: 10px; color: #94a3b8;">
+                        Visit <a href="https://github.com/Khan-Feroz211" target="_blank" style="color: #10b981;">GitHub Profile</a> directly
+                    </p>
+                </div>
+            `;
+        }
+        
+        // Load GitHub data when page loads
+        document.addEventListener('DOMContentLoaded', loadGitHubData);
+        
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // LinkedIn test
+        console.log('LinkedIn URL:', 'https://www.linkedin.com/in/feroz-u-din-26648839b');
+    </script>
+</body>
+</html>

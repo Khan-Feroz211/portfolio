@@ -1,0 +1,175 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Weather Prediction System - Feroz Khan</title>
+    <link rel="stylesheet" href="../../css/main.css">
+    <style>
+        .project-details {
+            padding: 80px 0;
+        }
+        
+        .security-section {
+            background: #fff7ed;
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+            border-left: 4px solid #f59e0b;
+        }
+        
+        .security-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .security-feature {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border: 1px solid #fed7aa;
+        }
+        
+        .access-control {
+            background: #f0f9ff;
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+        }
+        
+        .data-flow {
+            background: #f8fafc;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+        
+        .api-security {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="../../index.html" class="logo">Feroz Khan</a>
+            <ul class="nav-links">
+                <li><a href="../../index.html">Home</a></li>
+                <li><a href="../about.html">About</a></li>
+                <li><a href="smart-weather.html" class="active">Projects</a></li>
+                <li><a href="../../index.html#skills">Skills</a></li>
+                <li><a href="../contact/form.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container project-details">
+        <h1>Smart Weather Prediction System</h1>
+        <p class="subtitle">API-based weather prediction with secure access control</p>
+        
+        <div class="security-section">
+            <h3>Security Focus</h3>
+            <p>This project demonstrates secure API development with proper authentication, rate limiting, and access control to prevent unauthorized access.</p>
+        </div>
+        
+        <h2>Project Overview</h2>
+        <p>A weather prediction system that provides accurate forecasts through a secure API, with built-in protection against abuse and unauthorized access.</p>
+        
+        <div class="access-control">
+            <h3>Access Control Implementation</h3>
+            <p><strong>Never lose access to your own system:</strong> Built-in admin override and backup access methods</p>
+            
+            <div class="security-features">
+                <div class="security-feature">
+                    <h4>Multi-Factor Authentication</h4>
+                    <p>Email + API key + IP whitelisting</p>
+                </div>
+                <div class="security-feature">
+                    <h4>Admin Override</h4>
+                    <p>Emergency access via backup keys</p>
+                </div>
+                <div class="security-feature">
+                    <h4>Rate Limiting</h4>
+                    <p>Prevents API abuse and DDoS attacks</p>
+                </div>
+                <div class="security-feature">
+                    <h4>Audit Logging</h4>
+                    <p>All access attempts are logged</p>
+                </div>
+            </div>
+        </div>
+        
+        <h2>Key Features</h2>
+        <ul>
+            <li><strong>Real-time Weather Data:</strong> Integration with weather APIs</li>
+            <li><strong>Prediction Models:</strong> Simple ML models for forecast improvement</li>
+            <li><strong>RESTful API:</strong> Clean, documented API endpoints</li>
+            <li><strong>Data Caching:</strong> Reduces API calls and improves performance</li>
+            <li><strong>Error Handling:</strong> Graceful degradation and user-friendly errors</li>
+        </ul>
+        
+        <div class="data-flow">
+            <h3>Secure Data Flow</h3>
+            <pre style="background: white; padding: 1rem; border-radius: 5px;">
+User Request → Authentication Check → Rate Limit Check → 
+Process Request → Log Activity → Return Response
+            </pre>
+        </div>
+        
+        <div class="api-security">
+            <h3>API Security Measures</h3>
+            <ul>
+                <li><strong>API Key Authentication:</strong> Required for all endpoints</li>
+                <li><strong>HTTPS Enforcement:</strong> All traffic encrypted</li>
+                <li><strong>Input Validation:</strong> Sanitize all user inputs</li>
+                <li><strong>SQL Injection Prevention:</strong> Parameterized queries</li>
+                <li><strong>CORS Configuration:</strong> Restricted cross-origin requests</li>
+            </ul>
+        </div>
+        
+        <h2>Technology Stack</h2>
+        <div class="project-tech">
+            <span>Python</span>
+            <span>FastAPI/Flask</span>
+            <span>JWT Authentication</span>
+            <span>Redis Cache</span>
+            <span>PostgreSQL</span>
+            <span>Docker</span>
+            <span>API Gateway</span>
+        </div>
+        
+        <h2>Security Best Practices Implemented</h2>
+        <ol>
+            <li><strong>Never Hardcode Credentials:</strong> Use environment variables</li>
+            <li><strong>Backup Access Methods:</strong> Multiple ways to regain access</li>
+            <li><strong>Regular Security Audits:</strong> Scheduled vulnerability checks</li>
+            <li><strong>Automated Backups:</strong> Regular database backups</li>
+            <li><strong>Monitoring & Alerts:</strong> Real-time security monitoring</li>
+        </ol>
+        
+        <h2>How to Prevent Losing Access (JetForm Issue Solution)</h2>
+        <div class="security-feature" style="background: #dcfce7;">
+            <h4>Admin Recovery System</h4>
+            <ul>
+                <li>Multiple admin accounts with different access levels</li>
+                <li>Emergency override keys stored securely offline</li>
+                <li>Automated backup of admin credentials</li>
+                <li>Two-person rule for critical changes</li>
+                <li>Regular access review and cleanup</li>
+            </ul>
+        </div>
+        
+        <div style="margin-top: 3rem;">
+            <a href="../../index.html" class="btn btn-primary">Back to Portfolio</a>
+            <a href="dlp-system.html" class="btn btn-secondary">View Previous Project</a>
+        </div>
+    </div>
+</body>
+</html>

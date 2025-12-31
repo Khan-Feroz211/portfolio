@@ -1,0 +1,128 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .login-box {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            width: 100%;
+            max-width: 400px;
+        }
+        h1 {
+            text-align: center;
+            color: #0f172a;
+            margin-bottom: 1rem;
+        }
+        p {
+            text-align: center;
+            color: #64748b;
+            margin-bottom: 2rem;
+        }
+        input {
+            width: 100%;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 1rem;
+        }
+        button {
+            width: 100%;
+            padding: 1rem;
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #1d4ed8;
+        }
+        .message {
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            display: none;
+        }
+        .error {
+            background: #ef4444;
+            color: white;
+        }
+        .success {
+            background: #10b981;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-box">
+        <h1><i class="fas fa-user-cog"></i> Admin Login</h1>
+        <p>Enter password to manage portfolio</p>
+        
+        <div class="message" id="message"></div>
+        
+        <input type="password" id="password" placeholder="Enter password" autofocus>
+        
+        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 1rem;">
+            <input type="checkbox" id="remember">
+            <label for="remember">Remember me</label>
+        </div>
+        
+        <button onclick="login()">
+            <i class="fas fa-sign-in-alt"></i> Login
+        </button>
+        
+        <p style="margin-top: 1rem; font-size: 0.9rem;">
+            Default password: <strong>admin123</strong>
+        </p>
+    </div>
+
+    <script>
+        function login() {
+            const password = document.getElementById('password').value;
+            const remember = document.getElementById('remember').checked;
+            const defaultPass = 'admin123';
+            const savedPass = localStorage.getItem('admin_pass');
+            
+            if (password === (savedPass || defaultPass)) {
+                if (remember) {
+                    localStorage.setItem('admin_pass', password);
+                }
+                sessionStorage.setItem('logged_in', 'true');
+                window.location.href = 'manage.html';
+            } else {
+                showMessage('Incorrect password! Try: admin123', 'error');
+                document.getElementById('password').value = '';
+            }
+        }
+        
+        function showMessage(text, type) {
+            const msg = document.getElementById('message');
+            msg.textContent = text;
+            msg.className = `message ${type}`;
+            msg.style.display = 'block';
+        }
+        
+        // Enter key to login
+        document.getElementById('password').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') login();
+        });
+    </script>
+</body>
+</html>

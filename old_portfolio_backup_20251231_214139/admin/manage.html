@@ -1,0 +1,241 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Portfolio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background: #f8fafc;
+        }
+        .header {
+            background: #0f172a;
+            color: white;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .tabs {
+            display: flex;
+            background: white;
+            padding: 0 1rem;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        .tab {
+            padding: 1rem;
+            border: none;
+            background: none;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+        }
+        .tab.active {
+            color: #2563eb;
+            border-bottom-color: #2563eb;
+        }
+        .content {
+            padding: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 0.75rem;
+            margin-bottom: 1rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+        }
+        button {
+            background: #2563eb;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        .message {
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            display: none;
+        }
+        .success {
+            background: #10b981;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h2><i class="fas fa-cogs"></i> Portfolio Manager</h2>
+        <a href="index.html" style="color: white;">Logout</a>
+    </div>
+    
+    <div class="tabs">
+        <button class="tab active" onclick="showTab('profile')">Profile</button>
+        <button class="tab" onclick="showTab('skills')">Skills</button>
+        <button class="tab" onclick="showTab('projects')">Projects</button>
+    </div>
+    
+    <div class="content">
+        <div id="profile" class="tab-content active">
+            <h3>Edit Profile</h3>
+            <div class="message" id="profileMsg"></div>
+            <input id="name" placeholder="Your Name" value="Feroz Khan">
+            <input id="role" placeholder="Your Role" value="Developer from Pakistan">
+            <input id="email" placeholder="Email" value="www.ferozuddin405@gmail.com">
+            <textarea id="bio" placeholder="Bio">Building web applications with modern technologies.</textarea>
+            <button onclick="saveProfile()">Save Profile</button>
+        </div>
+        
+        <div id="skills" class="tab-content" style="display: none;">
+            <h3>Manage Skills</h3>
+            <div class="message" id="skillsMsg"></div>
+            <input id="newSkill" placeholder="New skill (e.g., React)">
+            <button onclick="addSkill()">Add Skill</button>
+            <div id="skillsList" style="margin-top: 2rem;"></div>
+        </div>
+        
+        <div id="projects" class="tab-content" style="display: none;">
+            <h3>Manage Projects</h3>
+            <div class="message" id="projectsMsg"></div>
+            <input id="projectName" placeholder="Project Name">
+            <textarea id="projectDesc" placeholder="Description"></textarea>
+            <input id="projectTech" placeholder="Technologies (comma separated)">
+            <input id="projectUrl" placeholder="GitHub URL">
+            <button onclick="addProject()">Add Project</button>
+            <div id="projectsList" style="margin-top: 2rem;"></div>
+        </div>
+    </div>
+
+    <script>
+        // Check login
+        if (!sessionStorage.getItem('logged_in')) {
+            window.location.href = 'index.html';
+        }
+        
+        // Load data
+        loadData();
+        
+        function showTab(tabName) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(el => {
+                el.style.display = 'none';
+            });
+            document.querySelectorAll('.tab').forEach(el => {
+                el.classList.remove('active');
+            });
+            
+            // Show selected tab
+            document.getElementById(tabName).style.display = 'block';
+            event.target.classList.add('active');
+        }
+        
+        function loadData() {
+            // Load profile
+            const profile = JSON.parse(localStorage.getItem('profile') || '{"name":"Feroz Khan","role":"Developer from Pakistan","email":"www.ferozuddin405@gmail.com","bio":"Building web applications with modern technologies."}');
+            document.getElementById('name').value = profile.name;
+            document.getElementById('role').value = profile.role;
+            document.getElementById('email').value = profile.email;
+            document.getElementById('bio').value = profile.bio;
+            
+            // Load skills
+            const skills = JSON.parse(localStorage.getItem('skills') || '[]');
+            renderSkills(skills);
+            
+            // Load projects
+            const projects = JSON.parse(localStorage.getItem('projects') || '[]');
+            renderProjects(projects);
+        }
+        
+        function saveProfile() {
+            const profile = {
+                name: document.getElementById('name').value,
+                role: document.getElementById('role').value,
+                email: document.getElementById('email').value,
+                bio: document.getElementById('bio').value
+            };
+            localStorage.setItem('profile', JSON.stringify(profile));
+            showMessage('profileMsg', 'Profile saved!');
+        }
+        
+        function addSkill() {
+            const skill = document.getElementById('newSkill').value.trim();
+            if (!skill) return;
+            
+            const skills = JSON.parse(localStorage.getItem('skills') || '[]');
+            skills.push(skill);
+            localStorage.setItem('skills', JSON.stringify(skills));
+            
+            renderSkills(skills);
+            document.getElementById('newSkill').value = '';
+            showMessage('skillsMsg', 'Skill added!');
+        }
+        
+        function renderSkills(skills) {
+            const list = document.getElementById('skillsList');
+            list.innerHTML = skills.map(skill => `
+                <div style="background: white; padding: 1rem; margin-bottom: 0.5rem; border-radius: 8px;">
+                    ${skill}
+                    <button onclick="removeSkill('${skill}')" style="float: right;">Remove</button>
+                </div>
+            `).join('');
+        }
+        
+        function removeSkill(skill) {
+            let skills = JSON.parse(localStorage.getItem('skills') || '[]');
+            skills = skills.filter(s => s !== skill);
+            localStorage.setItem('skills', JSON.stringify(skills));
+            renderSkills(skills);
+        }
+        
+        function addProject() {
+            const project = {
+                name: document.getElementById('projectName').value,
+                description: document.getElementById('projectDesc').value,
+                technologies: document.getElementById('projectTech').value,
+                url: document.getElementById('projectUrl').value
+            };
+            
+            const projects = JSON.parse(localStorage.getItem('projects') || '[]');
+            projects.push(project);
+            localStorage.setItem('projects', JSON.stringify(projects));
+            
+            renderProjects(projects);
+            document.getElementById('projectName').value = '';
+            document.getElementById('projectDesc').value = '';
+            document.getElementById('projectTech').value = '';
+            document.getElementById('projectUrl').value = '';
+            showMessage('projectsMsg', 'Project added!');
+        }
+        
+        function renderProjects(projects) {
+            const list = document.getElementById('projectsList');
+            list.innerHTML = projects.map((p, i) => `
+                <div style="background: white; padding: 1rem; margin-bottom: 1rem; border-radius: 8px;">
+                    <h4>${p.name}</h4>
+                    <p>${p.description}</p>
+                    <button onclick="removeProject(${i})">Remove</button>
+                </div>
+            `).join('');
+        }
+        
+        function removeProject(index) {
+            let projects = JSON.parse(localStorage.getItem('projects') || '[]');
+            projects.splice(index, 1);
+            localStorage.setItem('projects', JSON.stringify(projects));
+            renderProjects(projects);
+        }
+        
+        function showMessage(elementId, text) {
+            const el = document.getElementById(elementId);
+            el.textContent = text;
+            el.className = 'message success';
+            el.style.display = 'block';
+            setTimeout(() => el.style.display = 'none', 3000);
+        }
+    </script>
+</body>
+</html>

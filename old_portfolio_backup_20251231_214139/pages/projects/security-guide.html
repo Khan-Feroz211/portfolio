@@ -1,0 +1,169 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security Best Practices - Feroz Khan</title>
+    <link rel="stylesheet" href="../../css/main.css">
+    <style>
+        .security-guide {
+            padding: 80px 0;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .security-tip {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .code-block {
+            background: #1f2937;
+            color: #e5e7eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            overflow-x: auto;
+            font-family: "Courier New", monospace;
+        }
+        
+        .warning {
+            background: #fee2e2;
+            border-left: 4px solid #ef4444;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="../../index.html" class="logo">Feroz Khan</a>
+            <ul class="nav-links">
+                <li><a href="../../index.html">Home</a></li>
+                <li><a href="../about.html">About</a></li>
+                <li><a href="security-guide.html" class="active">Security</a></li>
+                <li><a href="../../index.html#skills">Skills</a></li>
+                <li><a href="../contact/form.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container security-guide">
+        <h1>Security Best Practices</h1>
+        <p class="subtitle">Preventing JetForm-like Access Issues</p>
+        
+        <div class="warning">
+            <h3>⚠️ Never Lose Access to Your Own Systems</h3>
+            <p>Learn from JetForm's mistake - always maintain multiple access methods.</p>
+        </div>
+        
+        <h2>1. Multiple Admin Accounts</h2>
+        <div class="code-block">
+# Python Example - Multiple Admin Setup
+ADMIN_ACCOUNTS = [
+    {"email": "primary@yourdomain.com", "role": "super_admin"},
+    {"email": "backup@yourdomain.com", "role": "admin"},
+    {"email": "emergency@yourdomain.com", "role": "read_only"}
+]
+        </div>
+        
+        <div class="security-tip">
+            <h4>💡 Tip: Use Environment Variables</h4>
+            <p>Never hardcode credentials in your code. Use environment variables or config files.</p>
+        </div>
+        
+        <h2>2. Emergency Access Methods</h2>
+        <ul>
+            <li><strong>Database Backup Access:</strong> Keep encrypted backups of admin credentials</li>
+            <li><strong>SSH Key Access:</strong> Multiple SSH keys for server access</li>
+            <li><strong>Cloud Console Access:</strong> Multiple cloud accounts with different permissions</li>
+            <li><strong>Physical Access:</strong> If applicable, physical server access</li>
+        </ul>
+        
+        <h2>3. Automated Recovery System</h2>
+        <div class="code-block">
+# Python Example - Automated Backup
+import schedule
+import time
+from datetime import datetime
+
+def backup_admin_credentials():
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    # Backup to secure location
+    with open(f"backups/admin_backup_{timestamp}.enc", "w") as f:
+        f.write(encrypted_admin_data)
+    print(f"Backup completed at {timestamp}")
+
+# Schedule daily backup
+schedule.every().day.at("02:00").do(backup_admin_credentials)
+        </div>
+        
+        <h2>4. Access Monitoring</h2>
+        <div class="code-block">
+# Python Example - Access Logging
+import logging
+
+def log_admin_access(user, action):
+    logger = logging.getLogger('security')
+    logger.info(f"Admin {user} performed {action} at {datetime.now()}")
+    
+# Use this for all admin actions
+log_admin_access(current_user, "changed_password")
+        </div>
+        
+        <h2>5. Practical Steps You Can Implement</h2>
+        
+        <div class="security-tip">
+            <h4>For Your Smart Weather System:</h4>
+            <ol>
+                <li>Create at least 3 admin accounts with different emails</li>
+                <li>Use API keys + passwords for authentication</li>
+                <li>Implement rate limiting to prevent abuse</li>
+                <li>Log all access attempts (successful and failed)</li>
+                <li>Set up automated email alerts for suspicious activity</li>
+            </ol>
+        </div>
+        
+        <div class="security-tip">
+            <h4>For Your DLP System:</h4>
+            <ol>
+                <li>Separate read-only and write-access accounts</li>
+                <li>Implement two-factor authentication</li>
+                <li>Regularly rotate API keys and passwords</li>
+                <li>Backup configuration files weekly</li>
+                <li>Test recovery procedures monthly</li>
+            </ol>
+        </div>
+        
+        <h2>Common Mistakes to Avoid</h2>
+        <ul>
+            <li>❌ Single point of failure (one admin account)</li>
+            <li>❌ No backup access methods</li>
+            <li>❌ Hardcoded credentials in source code</li>
+            <li>❌ No logging or monitoring</li>
+            <li>❌ Irregular security reviews</li>
+        </ul>
+        
+        <div class="warning">
+            <h3>🚨 Immediate Action Items</h3>
+            <ol>
+                <li>Set up at least 2 admin accounts for every system</li>
+                <li>Store backup credentials in a secure password manager</li>
+                <li>Enable logging for all admin actions</li>
+                <li>Create and test recovery procedures</li>
+                <li>Document all access methods</li>
+            </ol>
+        </div>
+        
+        <div style="margin-top: 3rem; text-align: center;">
+            <a href="../../index.html" class="btn btn-primary">Back to Portfolio</a>
+            <a href="smart-weather.html" class="btn btn-secondary">View Smart Weather Project</a>
+        </div>
+    </div>
+</body>
+</html>
