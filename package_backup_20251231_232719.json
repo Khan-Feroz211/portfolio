@@ -1,0 +1,13 @@
+﻿{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "description": "Feroz Khan Portfolio",
+  "main": "index.html",
+  "scripts": {
+    "dev": "echo 'Open index.html in browser'",
+    "build": "echo 'No build required'"
+  },
+  "keywords": ["portfolio", "ml", "engineer"],
+  "author": "Feroz Khan",
+  "license": "MIT"
+}

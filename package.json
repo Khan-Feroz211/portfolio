@@ -1,13 +1,10 @@
 ﻿{
-  "name": "portfolio",
+  "name": "feroz-portfolio",
   "version": "1.0.0",
-  "description": "Feroz Khan Portfolio",
+  "description": "Feroz Khan - ML Engineer Portfolio",
   "main": "index.html",
-  "scripts": {
-    "dev": "echo 'Open index.html in browser'",
-    "build": "echo 'No build required'"
-  },
-  "keywords": ["portfolio", "ml", "engineer"],
+  "scripts": {},
+  "keywords": ["portfolio", "machine-learning", "ai"],
   "author": "Feroz Khan",
   "license": "MIT"
 }
