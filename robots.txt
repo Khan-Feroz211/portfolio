@@ -1,0 +1,3 @@
+﻿User-agent: *
+Allow: /
+Sitemap: https://feroz-khan-portfolio.vercel.app/sitemap.xml
