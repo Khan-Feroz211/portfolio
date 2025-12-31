@@ -1,8 +1,9 @@
 ﻿{
   "version": 2,
+  "name": "feroz-khan-portfolio",
   "builds": [
     {
-      "src": "**/*",
+      "src": "index.html",
       "use": "@vercel/static"
     }
   ],
