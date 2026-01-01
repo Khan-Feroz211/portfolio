@@ -929,5 +929,120 @@ ml_engineer = MLPipeline()
                         </span>
                     </div>
                 </div>
-                
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GitHub Section (added) -->
+    <section id="github" class="github-section">
+        <div class="container">
+            <h2 class="section-title">GitHub Activity & Projects</h2>
+            <p class="section-subtitle">Live stats from GitHub for `Khan-Feroz211` (public data)</p>
+
+            <div class="github-stats">
+                <div class="stat-card">
+                    <i class="fas fa-book"></i>
+                    <h3 id="repo-count">—</h3>
+                    <div>Public repos</div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-star"></i>
+                    <h3 id="star-count">—</h3>
+                    <div>Total stars</div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-code-branch"></i>
+                    <h3 id="fork-count">—</h3>
+                    <div>Total forks</div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-user-friends"></i>
+                    <h3 id="follower-count">—</h3>
+                    <div>Followers</div>
+                </div>
+            </div>
+
+            <div class="github-widgets">
+                <div class="widget">
+                    <h4><i class="fab fa-github"></i> Top Projects</h4>
+                    <div id="projectsContainer" class="projects-grid">
+                        <div class="loading"><i class="fas fa-spinner"></i> Loading projects…</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section (added) -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2 class="section-title">Contact</h2>
+            <p class="section-subtitle">Get in touch for collaborations, consulting, or opportunities.</p>
+
+            <div class="contact-grid">
+                <div class="contact-form">
+                    <h3>Send a message</h3>
+                    <form id="contactForm" action="" method="POST">
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" placeholder="Your name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" placeholder="Your email" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" name="message" rows="5" placeholder="Message" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary">Send</button>
+                        </div>
+                        <div id="contactStatus" style="color: #94a3b8; margin-top: 10px;"></div>
+                    </form>
+                </div>
+
+                <div class="contact-info">
+                    <a class="contact-item" href="mailto:ferozuddin405@gmail.com">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <div>Email</div>
+                            <div style="opacity:0.8">ferozuddin405@gmail.com</div>
+                        </div>
+                    </a>
+                    <a class="contact-item" href="https://www.linkedin.com/in/feroz-u-din-26648839b/" target="_blank" rel="noopener">
+                        <i class="fab fa-linkedin"></i>
+                        <div>
+                            <div>LinkedIn</div>
+                            <div style="opacity:0.8">feroz-u-din-26648839b</div>
+                        </div>
+                    </a>
+                    <a class="contact-item" href="https://github.com/Khan-Feroz211" target="_blank" rel="noopener">
+                        <i class="fab fa-github"></i>
+                        <div>
+                            <div>GitHub</div>
+                            <div style="opacity:0.8">Khan-Feroz211</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (ensure year id present) -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-logo">Feroz Khan</div>
+            <div class="social-links">
+                <a href="https://github.com/Khan-Feroz211" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/feroz-u-din-26648839b/" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i></a>
+            </div>
+            <div class="footer-bottom">© <span id="currentYear"></span> Feroz Khan — Built with ❤️</div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/github-stats.js"></script>
+
+</body>
+</html>
 *** End of File
