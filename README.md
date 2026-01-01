@@ -17,3 +17,5 @@ This is my personal portfolio website showcasing my machine learning projects an
 ## Contact
 - GitHub: [Khan-Feroz211](https://github.com/Khan-Feroz211)
 - Portfolio: https://feroz-khan.vercel.app
+ - Portfolio (Vercel): https://feroz-khan.vercel.app
+ - Portfolio (GitHub Pages): https://Khan-Feroz211.github.io/portfolio/

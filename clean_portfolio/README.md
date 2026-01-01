@@ -28,6 +28,22 @@ python -m http.server 8000
 # Open http://localhost:8000 or http://localhost:8000/clean_portfolio
 ```
 
+Live site
+---------
+
+The site is published to GitHub Pages at:
+
+https://Khan-Feroz211.github.io/portfolio/
+
+Vercel CI (optional)
+---------------------
+
+A GitHub Actions workflow is provided to deploy `clean_portfolio` to Vercel automatically (see `.github/workflows/deploy-to-vercel.yml`). To enable it:
+
+- Add the following repository secrets in GitHub Settings → Secrets: `VERCEL_TOKEN`, `VERCEL_ORG_ID`, `VERCEL_PROJECT_ID`.
+- The workflow uses `clean_portfolio` as the working directory and runs on pushes to `main` that change files under `clean_portfolio/`.
+- Alternatively set the Vercel project's Root Directory to `clean_portfolio` in the Vercel UI.
+
 Notes:
 - External resources (Font Awesome, Google Fonts, GitHub widgets) are loaded from CDNs.
 - Mailto and external links include `rel="noopener"` for security.
