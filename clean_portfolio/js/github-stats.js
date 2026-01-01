@@ -1,29 +1,63 @@
 // GitHub API Integration for Live Stats
 document.addEventListener('DOMContentLoaded', function() {
-    async function fetchGitHubStats() {
+    async function fetchFromStatic() {
         try {
-            const response = await fetch('https://api.github.com/users/Khan-Feroz211');
-            const data = await response.json();
+            const res = await fetch('data/github-stats.json', {cache: 'no-store'});
+            if (!res.ok) throw new Error('No static stats');
+            return await res.json();
+        } catch (e) {
+            return null;
+        }
+    }
 
-            document.getElementById('repo-count').textContent = data.public_repos || '0';
-            document.getElementById('follower-count').textContent = data.followers || '0';
-
+    async function fetchFromApi() {
+        try {
+            const userResp = await fetch('https://api.github.com/users/Khan-Feroz211');
+            const user = await userResp.json();
             const repos = await fetch('https://api.github.com/users/Khan-Feroz211/repos?per_page=100').then(r => r.json());
-            let totalStars = 0;
-            let totalForks = 0;
-            repos.forEach(repo => {
-                totalStars += repo.stargazers_count || 0;
-                totalForks += repo.forks_count || 0;
-            });
+            const totalStars = (repos || []).reduce((s, r) => s + (r.stargazers_count || 0), 0);
+            const totalForks = (repos || []).reduce((s, r) => s + (r.forks_count || 0), 0);
+            return {
+                user,
+                total_stars: totalStars,
+                total_forks: totalForks,
+                top_repos: (repos || []).sort((a,b) => (b.stargazers_count||0)-(a.stargazers_count||0)).slice(0,6).map(r=>({name:r.name, html_url:r.html_url, stargazers_count:r.stargazers_count||0, forks_count:r.forks_count||0, language:r.language, description:r.description}))
+            };
+        } catch(e) { console.warn('public API error', e); return null; }
+    }
 
-            document.getElementById('star-count').textContent = totalStars;
-            document.getElementById('fork-count').textContent = totalForks;
+    async function fetchGitHubStats() {
+        const staticData = await fetchFromStatic();
+        let payload = null;
+        if (staticData) {
+            payload = staticData;
+        } else {
+            payload = await fetchFromApi();
+        }
 
-            // Render projects list (top 6 by stars)
-            const projectsContainer = document.getElementById('projectsContainer');
-            if (projectsContainer && Array.isArray(repos)) {
-                const sorted = repos.sort((a,b) => (b.stargazers_count||0) - (a.stargazers_count||0)).slice(0,6);
-                projectsContainer.innerHTML = sorted.map(repo => `
+        if (!payload) return;
+
+        // Populate UI
+        const user = payload.user || payload.user;
+        if (user) {
+            const repoCountEl = document.getElementById('repo-count');
+            if (repoCountEl) repoCountEl.textContent = payload.public_repos || payload.public_repos === 0 ? payload.public_repos : (user.public_repos || '0');
+            const followerEl = document.getElementById('follower-count');
+            if (followerEl) followerEl.textContent = payload.followers || (user.followers || '0');
+        }
+
+        const starEl = document.getElementById('star-count');
+        if (starEl) starEl.textContent = payload.total_stars ?? payload.total_stars ?? 0;
+        const forkEl = document.getElementById('fork-count');
+        if (forkEl) forkEl.textContent = payload.total_forks ?? payload.total_forks ?? 0;
+
+        const projectsContainer = document.getElementById('projectsContainer');
+        const repos = payload.top_repos || [];
+        if (projectsContainer) {
+            if (!repos.length) {
+                projectsContainer.innerHTML = '<div class="loading">No projects available</div>';
+            } else {
+                projectsContainer.innerHTML = repos.map(repo => `
                     <div class="project-card">
                         <div class="project-header">
                             <a class="project-name" href="${repo.html_url}" target="_blank" rel="noopener">${repo.name}</a>
@@ -37,9 +71,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     </div>
                 `).join('');
             }
-
-        } catch (error) {
-            console.warn('GitHub API error', error);
         }
     }
 

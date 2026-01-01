@@ -1,0 +1,51 @@
+name: Update GitHub stats JSON
+
+on:
+  schedule:
+    - cron: '0 * * * *' # hourly
+  push:
+    branches: [ main ]
+    paths:
+      - 'clean_portfolio/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install jq
+        run: sudo apt-get update && sudo apt-get install -y jq
+
+      - name: Fetch GitHub stats (authenticated)
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -e
+          OWNER=${{ github.repository_owner }}
+          mkdir -p clean_portfolio/data
+          # fetch user
+          curl -s -H "Authorization: token $GH_TOKEN" "https://api.github.com/users/$OWNER" -o tmp_user.json
+          # fetch repos (max 100)
+          curl -s -H "Authorization: token $GH_TOKEN" "https://api.github.com/users/$OWNER/repos?per_page=100" -o tmp_repos.json
+
+          TOTAL_STARS=$(jq '[.[] | .stargazers_count // 0] | add' tmp_repos.json)
+          TOTAL_FORKS=$(jq '[.[] | .forks_count // 0] | add' tmp_repos.json)
+
+          jq -n \
+            --slurpfile user tmp_user.json \
+            --slurpfile repos tmp_repos.json \
+            '{ user: $user[0], total_stars: ($repos | map(.stargazers_count // 0) | add), total_forks: ($repos | map(.forks_count // 0) | add), public_repos: $user[0].public_repos, followers: $user[0].followers, top_repos: ($repos | sort_by(-.stargazers_count) | .[0:6] | map({name: .name, html_url: .html_url, stargazers_count: .stargazers_count, forks_count: .forks_count, language: .language, description: .description})) }' > clean_portfolio/data/github-stats.json
+
+      - name: Commit and push stats
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if git status --porcelain | grep -q 'clean_portfolio/data/github-stats.json'; then
+            git add clean_portfolio/data/github-stats.json
+            git commit -m "chore: update clean_portfolio GitHub stats [skip ci]"
+            git push
+          else
+            echo "No changes to github-stats.json"
+          fi
