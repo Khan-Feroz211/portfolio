@@ -1,0 +1,29 @@
+===========================================
+🚀 DEPLOY TO VERCEL - NO NODE.JS NEEDED
+===========================================
+
+FOLLOW THESE 3 STEPS:
+
+STEP 1: OPEN VERCEL
+-------------------
+CLICK THIS LINK: https://vercel.com/new
+
+STEP 2: CONNECT GITHUB
+----------------------
+1. Click "Continue with GitHub"
+2. Authorize Vercel to access your account
+3. Select repository: Khan-Feroz211/portfolio
+
+STEP 3: DEPLOY
+--------------
+1. Click "Deploy" button
+2. Wait 30 seconds
+3. Your portfolio is LIVE!
+
+YOUR LIVE URL:
+https://feroz-portfolio.vercel.app
+
+ALTERNATIVE URL:
+https://portfolio-khan-feroz211.vercel.app
+
+NO NODE.JS REQUIRED! 🎉
