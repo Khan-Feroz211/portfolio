@@ -1,9 +1,16 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Feroz Khan | ML Engineer & AI Developer 🇵🇰</title>
+    <meta name="description" content="Feroz Khan — Machine Learning & AI Developer from Pakistan. Building intelligent systems with Deep Learning, MLOps, and Cloud technologies.">
+    <meta name="author" content="Feroz Khan">
+    <!-- Open Graph / Social sharing -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Feroz Khan | ML Engineer & AI Developer">
+    <meta property="og:description" content="Passionate ML Engineer building intelligent systems with Deep Learning, MLOps, and Cloud technologies.">
+    <meta property="og:url" content="https://khan-feroz211.github.io/portfolio/">
     
     <!-- Fonts & Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -1633,8 +1640,8 @@
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text">
-                    <h1>Machine Learning & AI Developer</h1>
-                    <h2>Building Intelligent Systems <span class="country-flag">🇵🇰</span></h2>
+                    <h1>Hi, I'm <span class="highlight">Feroz Khan</span></h1>
+                    <h2>Machine Learning & AI Developer <span class="country-flag">🇵🇰</span></h2>
                     <p>
                         Passionate about creating intelligent solutions using Machine Learning, Deep Learning, and MLOps. 
                         Specializing in building scalable AI systems with modern cloud technologies.
@@ -1833,7 +1840,7 @@ ml_engineer = MLPipeline()
             <div class="github-stats-images">
                 <div class="stats-image-card">
                     <img id="githubStatsImg" 
-                         src="https://github-readme-stats.vercel.app/api?username=Khan-Feroz211&show_icons=true&theme=radical&bg_color=0a0a0f&title_color=667eea&icon_color=fa709a&text_color=ffffff&border_color=667eea&hide_border=false&cache_seconds=1800&t=${Date.now()}" 
+                         src="https://github-readme-stats.vercel.app/api?username=Khan-Feroz211&show_icons=true&theme=radical&bg_color=0a0a0f&title_color=667eea&icon_color=fa709a&text_color=ffffff&border_color=667eea&hide_border=false&cache_seconds=1800" 
                          alt="GitHub Stats" 
                          loading="eager"
                          onerror="this.style.display='none'; document.getElementById('statsError1').style.display='block';">
@@ -1845,7 +1852,7 @@ ml_engineer = MLPipeline()
                 </div>
                 <div class="stats-image-card">
                     <img id="githubStreakImg"
-                         src="https://streak-stats.demolab.com/?user=Khan-Feroz211&theme=radical&background=0a0a0f&ring=667eea&fire=fa709a&currStreakLabel=667eea&border=667eea&cache_seconds=1800&t=${Date.now()}" 
+                         src="https://streak-stats.demolab.com/?user=Khan-Feroz211&theme=radical&background=0a0a0f&ring=667eea&fire=fa709a&currStreakLabel=667eea&border=667eea&cache_seconds=1800" 
                          alt="GitHub Streak Stats" 
                          loading="eager"
                          onerror="this.style.display='none'; document.getElementById('statsError2').style.display='block';">
@@ -1887,7 +1894,8 @@ ml_engineer = MLPipeline()
             <div class="contact-grid">
                 <div class="contact-form">
                     <h3>Send a Message</h3>
-                    <form id="contactForm">
+                    <!-- To receive messages, sign up at https://formspree.io and replace YOUR_FORM_ID below with your form ID -->
+                    <form id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
                         <div class="form-group">
                             <input type="text" id="name" name="name" placeholder="Your name" required>
                         </div>
@@ -1907,11 +1915,11 @@ ml_engineer = MLPipeline()
                 </div>
 
                 <div class="contact-info">
-                    <a class="contact-item" href="/cdn-cgi/l/email-protection#e38586918c999687878a8dd7d3d6a3848e828a8fcd808c8e">
+                    <a class="contact-item" href="mailto:ferozuddin405@gmail.com">
                         <i class="fas fa-envelope"></i>
                         <div>
                             <div>Email</div>
-                            <div><span class="__cf_email__" data-cfemail="620407100d181706060b0c56525722050f030b0e4c010d0f">[email&#160;protected]</span></div>
+                            <div>ferozuddin405@gmail.com</div>
                         </div>
                     </a>
                     <a class="contact-item" href="https://www.linkedin.com/in/feroz-u-din-26648839b/" target="_blank" rel="noopener">
@@ -1949,7 +1957,7 @@ ml_engineer = MLPipeline()
         </div>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script>
         // Mobile Menu Toggle
         const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
         const navLinks = document.querySelector('.nav-links');
@@ -2226,23 +2234,53 @@ ml_engineer = MLPipeline()
             }).join('');
         }
         
-        // Contact Form Handler
+        // Contact Form Handler — powered by Formspree
         const contactForm = document.getElementById('contactForm');
         if (contactForm) {
-            contactForm.addEventListener('submit', (e) => {
+            contactForm.addEventListener('submit', async (e) => {
                 e.preventDefault();
                 const statusDiv = document.getElementById('contactStatus');
-                statusDiv.textContent = 'Message sent! I\'ll get back to you soon.';
-                statusDiv.style.color = '#48dbfb';
-                contactForm.reset();
-                setTimeout(() => {
-                    statusDiv.textContent = '';
-                }, 5000);
+                const submitBtn = contactForm.querySelector('button[type="submit"]');
+
+                submitBtn.disabled = true;
+                statusDiv.textContent = 'Sending…';
+                statusDiv.style.color = 'var(--text-secondary)';
+
+                try {
+                    const response = await fetch(contactForm.action, {
+                        method: 'POST',
+                        body: new FormData(contactForm),
+                        headers: { 'Accept': 'application/json' }
+                    });
+
+                    if (response.ok) {
+                        statusDiv.textContent = "Message sent! I'll get back to you soon. 🎉";
+                        statusDiv.style.color = '#48dbfb';
+                        contactForm.reset();
+                    } else {
+                        const data = await response.json().catch(() => ({}));
+                        statusDiv.textContent = data.error || 'Something went wrong. Please email me directly.';
+                        statusDiv.style.color = '#ff6b6b';
+                    }
+                } catch {
+                    statusDiv.textContent = 'Network error. Please email me directly.';
+                    statusDiv.style.color = '#ff6b6b';
+                } finally {
+                    submitBtn.disabled = false;
+                    setTimeout(() => { statusDiv.textContent = ''; }, 6000);
+                }
             });
         }
         
         // Initialize
         fetchGitHubStats();
+
+        // Add cache-busting to GitHub stats images so fresh data loads each visit
+        const ts = Date.now();
+        const statsImg = document.getElementById('githubStatsImg');
+        const streakImg = document.getElementById('githubStreakImg');
+        if (statsImg) statsImg.src += '&t=' + ts;
+        if (streakImg) streakImg.src += '&t=' + ts;
         
         // ===== CERTIFICATES MANAGEMENT =====
         // Add your certificates here - easy to update!
