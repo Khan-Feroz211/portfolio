@@ -1151,7 +1151,7 @@
       /* Contact */
       .avail-row { grid-template-columns: 90px 1fr; gap: 0.4rem; }
       .avail-box { padding: 1.4rem; }
-      .contact-value { font-size: 0.78rem; word-break: break-all; }
+      .contact-value { font-size: 0.78rem; overflow-wrap: break-word; word-break: break-word; }
       .looking-for-chips { gap: 0.35rem; }
 
       /* Footer */
@@ -1252,7 +1252,7 @@
   </nav>
 
   <!-- Mobile Navigation Overlay -->
-  <div class="nav-mobile-menu" id="mobileMenu" role="dialog" aria-label="Mobile navigation">
+  <div class="nav-mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Mobile navigation">
     <a href="#projects" class="mobile-nav-link">Projects</a>
     <a href="#skills" class="mobile-nav-link">Skills</a>
     <a href="#experience" class="mobile-nav-link">Experience</a>
@@ -2044,6 +2044,15 @@
         mobileToggle.classList.remove('open');
         document.body.style.overflow = '';
       });
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && mobileMenu.classList.contains('open')) {
+        mobileMenu.classList.remove('open');
+        mobileToggle.classList.remove('open');
+        document.body.style.overflow = '';
+        mobileToggle.focus();
+      }
     });
   </script>
 
