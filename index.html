@@ -205,6 +205,60 @@
       .nav-mobile-toggle { display: flex; }
     }
 
+    /* Mobile nav toggle open animation */
+    .nav-mobile-toggle.open span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+    .nav-mobile-toggle.open span:nth-child(2) {
+      opacity: 0;
+      transform: scaleX(0);
+    }
+    .nav-mobile-toggle.open span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    /* Full-screen mobile menu overlay */
+    .nav-mobile-menu {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(6, 7, 13, 0.97);
+      backdrop-filter: blur(20px);
+      z-index: 998;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-mobile-menu.open { display: flex; }
+    .nav-mobile-menu a {
+      font-family: var(--font-head);
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: 0.04em;
+      transition: color var(--transition);
+    }
+    .nav-mobile-menu a:hover { color: var(--accent); }
+    .nav-mobile-menu .btn-hire-mobile {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      padding: 0.65rem 2rem;
+      border-radius: 6px;
+      margin-top: 0.5rem;
+      transition: background var(--transition), box-shadow var(--transition);
+    }
+    .nav-mobile-menu .btn-hire-mobile:hover {
+      background: rgba(0,229,255,0.1);
+      box-shadow: var(--glow-c);
+    }
+
     /* ═══════════════════════════════════════
        HERO
     ═══════════════════════════════════════ */
@@ -240,7 +294,6 @@
 
     @media (max-width: 900px) {
       .hero-grid { grid-template-columns: 1fr; }
-      .hero-code { order: -1; }
     }
 
     .hero-availability {
@@ -1028,6 +1081,150 @@
     .mt-1 { margin-top: 0.5rem; }
     .mt-2 { margin-top: 1rem; }
     .mb-3 { margin-bottom: 1.5rem; }
+
+    /* ═══════════════════════════════════════
+       MOBILE RESPONSIVENESS (≤768px)
+    ═══════════════════════════════════════ */
+    @media (max-width: 768px) {
+      section { padding: 3.5rem 0; }
+      .container { padding: 0 1.1rem; }
+
+      /* Hero */
+      #hero { padding-top: 4rem; }
+      .hero-grid { gap: 2rem; }
+      .hero-availability { font-size: 0.68rem; }
+      .hero-desc { font-size: 0.83rem; }
+
+      .hero-ctas {
+        flex-direction: column;
+        gap: 0.75rem;
+        margin-bottom: 2rem;
+      }
+      .hero-ctas .btn-primary,
+      .hero-ctas .btn-secondary {
+        text-align: center;
+        padding: 0.75rem 1.4rem;
+      }
+
+      .hero-stats { gap: 1.2rem; }
+      .stat-num { font-size: 1.3rem; }
+
+      /* Code card — smaller font, keep horizontal scroll */
+      .code-body { font-size: 0.65rem; padding: 1rem; line-height: 1.75; }
+      .code-body pre { white-space: pre; overflow-x: auto; }
+
+      /* Section headers */
+      .section-title { font-size: clamp(1.5rem, 5.5vw, 2rem); }
+      .section-desc { margin-bottom: 2rem; font-size: 0.83rem; }
+
+      /* Metrics strip */
+      .metrics-strip { padding: 2rem 0; }
+      .metric-num { font-size: 1.5rem; }
+
+      /* Projects */
+      .project-featured { padding: 1.4rem; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .project-stats-grid { grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+
+      /* Skills */
+      .skills-grid { grid-template-columns: 1fr; gap: 1rem; }
+      .skill-group { padding: 1.2rem; }
+
+      /* Timeline */
+      .timeline { padding-left: 1.6rem; }
+      .exp-card { padding: 1.2rem; }
+      .exp-header { flex-direction: column; gap: 0.2rem; }
+      .exp-period { font-size: 0.68rem; }
+      .exp-bullets li { font-size: 0.75rem; }
+
+      /* GitHub */
+      .gh-stats-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.8rem;
+        flex-wrap: unset;
+      }
+      .gh-stat-card { padding: 1rem; }
+      .gh-stat-num { font-size: 1.5rem; }
+      .repos-grid { grid-template-columns: 1fr; }
+
+      /* Contact */
+      .avail-row { grid-template-columns: 90px 1fr; gap: 0.4rem; }
+      .avail-box { padding: 1.4rem; }
+      .contact-value { font-size: 0.78rem; overflow-wrap: break-word; word-break: break-word; }
+      .looking-for-chips { gap: 0.35rem; }
+
+      /* Footer */
+      footer { padding: 2rem 0; }
+      .footer-philosophy { font-size: 0.8rem; }
+    }
+
+    /* ═══════════════════════════════════════
+       EXTRA SMALL (≤480px)
+    ═══════════════════════════════════════ */
+    @media (max-width: 480px) {
+      section { padding: 3rem 0; }
+      .container { padding: 0 0.9rem; }
+
+      /* Hero stats in 2-column grid */
+      .hero-stats {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.8rem;
+        padding-top: 1.2rem;
+      }
+
+      /* Hero grid tighter */
+      .hero-grid { gap: 1.5rem; }
+
+      /* Code card — even smaller */
+      .code-body { font-size: 0.6rem; padding: 0.8rem; }
+
+      /* Metrics: tighter */
+      .metric-item { padding: 1.1rem 0.5rem; }
+      .metric-num { font-size: 1.3rem; }
+      .metric-label { font-size: 0.62rem; }
+
+      /* Section title */
+      .section-title { font-size: clamp(1.35rem, 6vw, 1.8rem); }
+
+      /* Project featured inner already stacks, just tighten */
+      .project-featured { padding: 1.1rem; }
+      .project-title { font-size: 1.3rem; }
+      .project-badge { font-size: 0.6rem; padding: 0.2rem 0.55rem; }
+
+      /* Skills */
+      .skill-group-title { font-size: 0.8rem; }
+
+      /* Timeline */
+      .timeline { padding-left: 1.3rem; }
+      .timeline-dot { width: 10px; height: 10px; left: -1.3rem; transform: translateX(-4px); }
+      .exp-company { font-size: 0.95rem; }
+
+      /* Contact availability */
+      .avail-row {
+        grid-template-columns: 1fr;
+        gap: 0.15rem;
+        margin-bottom: 0.6rem;
+      }
+      .avail-key {
+        font-size: 0.62rem;
+        color: var(--accent);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+      .avail-val { font-size: 0.76rem; }
+      .avail-box-title { font-size: 0.9rem; }
+
+      /* GitHub stat cards 2x2 */
+      .gh-stats-row { grid-template-columns: 1fr 1fr; }
+      .gh-stat-num { font-size: 1.4rem; }
+      .gh-stat-label { font-size: 0.62rem; }
+
+      /* Footer */
+      .footer-philosophy { font-size: 0.75rem; }
+      .footer-copy { font-size: 0.67rem; }
+    }
   </style>
 </head>
 <body>
@@ -1053,6 +1250,16 @@
       </div>
     </div>
   </nav>
+
+  <!-- Mobile Navigation Overlay -->
+  <div class="nav-mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Mobile navigation">
+    <a href="#projects" class="mobile-nav-link">Projects</a>
+    <a href="#skills" class="mobile-nav-link">Skills</a>
+    <a href="#experience" class="mobile-nav-link">Experience</a>
+    <a href="#github" class="mobile-nav-link">GitHub</a>
+    <a href="#contact" class="mobile-nav-link">Contact</a>
+    <a href="mailto:f24605023@nutech.edu.pk" class="btn-hire-mobile">Hire Me</a>
+  </div>
 
   <!-- ═══════════════════════════════════════
        HERO
@@ -1820,6 +2027,33 @@
     }
 
     loadGitHub();
+
+    /* ─── MOBILE NAV TOGGLE ─── */
+    const mobileToggle = document.getElementById('mobileToggle');
+    const mobileMenu   = document.getElementById('mobileMenu');
+
+    mobileToggle.addEventListener('click', () => {
+      const isOpen = mobileMenu.classList.toggle('open');
+      mobileToggle.classList.toggle('open', isOpen);
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('open');
+        mobileToggle.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && mobileMenu.classList.contains('open')) {
+        mobileMenu.classList.remove('open');
+        mobileToggle.classList.remove('open');
+        document.body.style.overflow = '';
+        mobileToggle.focus();
+      }
+    });
   </script>
 
 </body>
