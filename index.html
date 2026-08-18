@@ -1647,7 +1647,7 @@
                 <!-- Mermaid diagram: QARD system architecture -->
                 <!-- Mobile app → FastAPI backend → FAISS verification → Kubernetes/DB layer -->
                 <div class="mermaid">
-flow TD
+graph TD
     %%{init: {'theme':'dark','themeVariables':{'primaryColor':'#0d0f1a','secondaryColor':'#131627','tertiaryColor':'#06070d','borderRadius':'10px','fontSize':'12px','primaryTextColor':'#e2e8f0'}}} %%
     subgraph M["Mobile Layer"]
         direction TB
@@ -1770,7 +1770,7 @@ flow TD
               <!-- Mermaid diagram: EliteCSS-AI data flow -->
               <!-- query → routing logic → GPT-4o-mini/Claude/Gemini → SSE stream back to client -->
               <div class="mermaid">
-flow LR
+graph LR
     %%{init: {'theme':'dark','themeVariables':{'primaryColor':'#0d0f1a','secondaryColor':'#131627','borderRadius':'10px','fontSize':'12px','primaryTextColor':'#e2e8f0'}}} %%
     U["User Query"] --> R["Routing Logic"]
     R --> GPT["GPT-4o-mini"]
@@ -1830,7 +1830,7 @@ flow LR
               <!-- Mermaid diagram: Nutech Bus Route data flow -->
               <!-- GPS device → WebSocket server → client map via Socket.io -->
               <div class="mermaid">
-flow TD
+graph TD
     %%{init: {'theme':'dark','themeVariables':{'primaryColor':'#0d0f1a','secondaryColor':'#131627','borderRadius':'10px','fontSize':'12px','primaryTextColor':'#e2e8f0'}}} %%
     GPS["GPS Device\non Bus"] --> WS["WebSocket Server"]
     WS --> SocketIO["Socket.io"]
