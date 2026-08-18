@@ -691,30 +691,7 @@
       letter-spacing: 0.06em;
     }
 
-    .skill-item {
-      margin-bottom: 0.8rem;
-    }
-    .skill-row {
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.73rem;
-      margin-bottom: 0.3rem;
-    }
-    .skill-name { color: var(--text); }
-    .skill-pct { color: var(--muted); }
-    .skill-bar {
-      height: 4px;
-      background: var(--surface2);
-      border-radius: 2px;
-      overflow: hidden;
-    }
-    .skill-fill {
-      height: 100%;
-      border-radius: 2px;
-      background: linear-gradient(90deg, var(--accent), var(--purple));
-      width: 0;
-      transition: width 1.2s ease;
-    }
+    /* SKILL TIER LIST (replaces percentage bars) */
 
     /* ═══════════════════════════════════════
        EXPERIENCE
@@ -1221,11 +1198,203 @@
       .gh-stat-num { font-size: 1.4rem; }
       .gh-stat-label { font-size: 0.62rem; }
 
+      /* Views toggle */
+      .view-toggle button { font-size: 0.62rem; padding: 0.3rem 0.5rem; }
+
+      /* Project cards — tighter toggle + diagram */
+      .project-card .view-toggle { margin: 0.8rem 0; }
+      .project-card .view-toggle { gap: 0.2rem; }
+      .mermaid-container { padding: 0.6rem; }
+      .screenshot-slot { padding: 0.6rem; min-height: 120px; }
+
+      /* Case study */
+      .case-study-toggle { font-size: 0.68rem; padding: 0.4rem 0.8rem; }
+      .case-study-content { padding: 1rem; }
+
+      /* Skills grid tighter */
+      .skills-grid { gap: 1.5rem; }
+      .skill-tier-item { padding: 0.2rem 0; }
+      .skill-tier-label { font-size: 0.68rem; }
+      .skill-tier-tag { font-size: 0.52rem; padding: 0.1rem 0.4rem; }
+
+      /* Hero CTAs stack */
+      .hero-ctas { gap: 0.6rem; }
+
+      /* Testimonial */
+      .testimonial-card { padding: 1.2rem; }
+      .testimonial-quote { font-size: 0.75rem; }
+      .testimonial-author { flex-direction: column; gap: 0.2rem; }
+
       /* Footer */
       .footer-philosophy { font-size: 0.75rem; }
       .footer-copy { font-size: 0.67rem; }
     }
+
+    /* ═══════════════════════════════════════
+       ARCHITECTURE / SCREENSHOT TOGGLE
+    ═══════════════════════════════════════ */
+    .view-toggle {
+      display: flex;
+      gap: 0.3rem;
+      margin: 1rem 0;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.3rem;
+    }
+    .view-toggle-btn,
+    .view-toggle button {
+      flex: 1;
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      background: transparent;
+      color: var(--muted);
+      border: none;
+      cursor: pointer;
+      transition: all var(--transition);
+    }
+    .view-toggle-btn.active,
+    .view-toggle button.active {
+      background: var(--surface);
+      color: var(--accent);
+      box-shadow: 0 0 12px rgba(0,229,255,0.25);
+    }
+    .view-toggle-btn:hover:not(.active),
+    .view-toggle button:hover:not(.active) { color: var(--text); }
+
+    .view-pane {
+      display: none;
+      animation: fadeIn 0.3s ease;
+    }
+    .view-pane.active { display: block; }
+
+    .mermaid-container {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1rem;
+      overflow-x: auto;
+      min-height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .mermaid-container .mermaid { font-size: 0.9rem; }
+
+    .screenshot-slot {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1rem;
+      text-align: center;
+      min-height: 160px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .screenshot-slot img { max-width: 100%; height: auto; border-radius: 6px; display: block; }
+    .screenshot-placeholder { color: var(--muted); font-size: 0.75rem; text-align: center; }
+
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+    /* ═══════════════════════════════════════
+       SKILL TIER TAGS (replaces percentage bars)
+    ═══════════════════════════════════════ */
+    .skill-tier-list { display: flex; flex-direction: column; gap: 0.3rem; }
+    .skill-tier-item {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 0.3rem 0; border-bottom: 1px solid rgba(0,229,255,0.05);
+    }
+    .skill-tier-item:last-child { border-bottom: none; }
+    .skill-tier-label { font-family: var(--font-mono); font-size: 0.73rem; color: var(--text); }
+    .skill-tier-tag {
+      font-size: 0.58rem; padding: 0.15rem 0.55rem; border-radius: 4px;
+      text-transform: uppercase; letter-spacing: 0.05em;
+      font-family: var(--font-mono); font-weight: 600;
+    }
+    .tier-core { background: rgba(0,229,255,0.1); color: var(--accent); border: 1px solid rgba(0,229,255,0.25); }
+    .tier-comfortable { background: rgba(124,58,237,0.1); color: var(--purple); border: 1px solid rgba(124,58,237,0.25); }
+    .tier-exploring { background: rgba(249,115,22,0.1); color: var(--orange); border: 1px solid rgba(249,115,22,0.25); }
+
+    /* ═══════════════════════════════════════
+       CASE STUDY
+    ═══════════════════════════════════════ */
+    .case-study-toggle {
+      display: flex; align-items: center; gap: 0.5rem;
+      font-family: var(--font-mono); font-size: 0.72rem;
+      color: var(--accent); background: transparent;
+      border: 1px solid var(--border); padding: 0.5rem 1rem;
+      border-radius: 8px; cursor: pointer; margin-top: 1.2rem;
+      transition: all var(--transition); width: 100%; text-align: left;
+    }
+    .case-study-toggle:hover { background: rgba(0,229,255,0.05); box-shadow: var(--glow-c); }
+    .case-study-toggle .chevron-icon { margin-left: auto; transition: transform var(--transition); }
+    .case-study-toggle.open .chevron-icon { transform: rotate(180deg); }
+    .case-study-content {
+      display: none; margin-top: 1.5rem; padding: 1.8rem;
+      background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
+    }
+    .case-study-content.open { display: block; }
+    .case-study-content h4 {
+      font-family: var(--font-head); font-size: 0.9rem; font-weight: 700;
+      color: var(--accent); margin-bottom: 1rem; padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .cs-section { margin-bottom: 1.2rem; }
+    .cs-section:last-child { margin-bottom: 0; }
+    .cs-section h5 {
+      font-family: var(--font-mono); font-size: 0.68rem;
+      text-transform: uppercase; letter-spacing: 0.08em;
+      color: var(--muted); margin-bottom: 0.5rem;
+    }
+    .cs-section p { font-size: 0.8rem; color: var(--text); line-height: 1.7; }
+    .cs-section ul { list-style: none; padding: 0; }
+    .cs-section ul li {
+      font-size: 0.78rem; color: var(--muted); padding-left: 1.2rem;
+      position: relative; margin-bottom: 0.3rem; line-height: 1.7;
+    }
+    .cs-section ul li::before { content: '→'; position: absolute; left: 0; color: var(--accent); }
+    .cs-placeholder { color: var(--muted); font-style: italic; font-size: 0.78rem; text-align: center; padding: 1.5rem; }
+    .cs-link { color: var(--accent); text-decoration: underline; font-size: 0.78rem; }
+
+    /* ═══════════════════════════════════════
+       TESTIMONIAL
+    ═══════════════════════════════════════ */
+    .testimonial-card {
+      background: var(--surface2); border: 1px solid var(--border);
+      border-radius: 12px; padding: 1.8rem; margin: 2rem 0;
+      transition: border-color var(--transition), box-shadow var(--transition);
+    }
+    .testimonial-card:hover { border-color: rgba(0,229,255,0.25); box-shadow: var(--glow-c); }
+    .testimonial-quote { font-size: 0.82rem; color: var(--muted); line-height: 1.8; font-style: italic; margin-bottom: 1rem; text-align: center; }
+    .testimonial-author { display: flex; align-items: center; gap: 0.8rem; justify-content: center; }
+    .testimonial-author .testimonial-name { font-family: var(--font-head); font-size: 0.85rem; font-weight: 700; color: var(--text); }
+    .testimonial-author .testimonial-title { font-size: 0.7rem; color: var(--muted); }
+
+    /* ═══════════════════════════════════════
+       RESUME BUTTON
+    ═══════════════════════════════════════ */
+    .btn-resume {
+      font-family: var(--font-mono); font-size: 0.75rem; font-weight: 600;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--purple); border: 1px solid var(--purple);
+      padding: 0.45rem 1.1rem; border-radius: 5px; transition: all var(--transition);
+    }
+    .btn-resume:hover { background: rgba(124,58,237,0.1); box-shadow: var(--glow-p); }
+    .btn-resume-mobile { color: var(--purple); border-color: var(--purple); }
+    .btn-resume-mobile:hover { background: rgba(124,58,237,0.1); box-shadow: var(--glow-p); }
+
+    /* GitHub contribution chart */
+    .gh-chart { margin: 2rem 0; text-align: center; }
+    .gh-chart img { max-width: 100%; border-radius: 10px; border: 1px solid var(--border); background: var(--surface); }
+    .gh-chart-caption { font-size: 0.68rem; color: var(--muted); margin-top: 0.5rem; text-transform: uppercase; letter-spacing: 0.08em; }
   </style>
+  <!-- MERMAID: architecture diagrams (dark theme) -->
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
 </head>
 <body>
 
@@ -1244,6 +1413,7 @@
           <li><a href="#contact">Contact</a></li>
         </ul>
         <a href="mailto:f24605023@nutech.edu.pk" class="btn-hire">Hire Me</a>
+        <a href="/resume.pdf" class="btn-resume" download>Resume</a>
         <div class="nav-mobile-toggle" id="mobileToggle">
           <span></span><span></span><span></span>
         </div>
@@ -1259,6 +1429,7 @@
     <a href="#github" class="mobile-nav-link">GitHub</a>
     <a href="#contact" class="mobile-nav-link">Contact</a>
     <a href="mailto:f24605023@nutech.edu.pk" class="btn-hire-mobile">Hire Me</a>
+    <a href="/resume.pdf" class="btn-hire-mobile btn-resume-mobile" download>Download Resume</a>
   </div>
 
   <!-- ═══════════════════════════════════════
@@ -1290,6 +1461,7 @@
             <a href="#projects" class="btn-primary">View Projects</a>
             <a href="#contact" class="btn-secondary">Get in Touch</a>
             <a href="https://github.com/Khan-Feroz211" target="_blank" rel="noopener" class="btn-secondary">GitHub</a>
+            <a href="/resume.pdf" class="btn-resume" download>Download Resume</a>
           </div>
 
           <div class="hero-stats reveal reveal-delay-4">
@@ -1465,15 +1637,100 @@
                 <div class="pstat-label">Uptime</div>
               </div>
             </div>
-            <div class="mt-2" style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.2rem;">
-              <div style="font-size:0.72rem;color:var(--muted);margin-bottom:0.8rem;text-transform:uppercase;letter-spacing:0.08em;">Architecture</div>
-              <div style="display:flex;flex-direction:column;gap:0.5rem;font-size:0.73rem;color:var(--muted);">
-                <div>📱 React Native (iOS + Android)</div>
-                <div>🖥️ React Admin Portal</div>
-                <div>⚡ FastAPI Backend</div>
-                <div>🔍 FAISS Face Verification</div>
-                <div>☸️ Kubernetes + Auto-scaling</div>
-                <div>📊 MLflow Observability</div>
+            <!-- Architecture / Screenshot toggle -->
+            <div class="view-toggle mt-2">
+              <button class="view-toggle-btn active" data-target="qard-arch" data-view="arch">Architecture</button>
+              <button class="view-toggle-btn" data-target="qard-arch" data-view="screenshot">Screenshot</button>
+            </div>
+            <div id="qard-arch" class="view-pane active">
+              <div class="mermaid-container">
+                <!-- Mermaid diagram: QARD system architecture -->
+                <!-- Mobile app → FastAPI backend → FAISS verification → Kubernetes/DB layer -->
+                <div class="mermaid">
+flow TD
+    %%{init: {'theme':'dark','themeVariables':{'primaryColor':'#0d0f1a','secondaryColor':'#131627','tertiaryColor':'#06070d','borderRadius':'10px','fontSize':'12px','primaryTextColor':'#e2e8f0','edgeLabelBackground':'#0d0f1a','tertiaryColor':'#131627'}}} %%
+    subgraph M["📱 Mobile Layer"]
+        direction TB
+        RN["React Native<br/>iOS + Android"]
+        Portal["🖥️ React Admin<br/>Portal"]
+    end
+
+    subgraph B["⚡ Backend"]
+        direction TB
+        API["FastAPI<br/>REST + GraphQL"]
+        FA["🔍 FAISS<br/>Face Verification"]
+    end
+
+    subgraph I["☸️ Infrastructure"]
+        direction TB
+        K8S["Kubernetes<br/>Auto-scaling"]
+        DB["📊 PostgreSQL<br/>+ Redis"]
+        ML["📈 MLflow<br/>Observability"]
+    end
+
+    RN -->|API calls| API
+    Portal -->|Admin API| API
+    API -->|Face vectors| FA
+    API -->|Orchestration| K8S
+    FA -->|Vectors| DB
+    K8S -->|Persist data| DB
+    K8S -->|Metrics| ML
+        classDef default fill:#0d0f1a,stroke:#00e5ff,stroke-width:1px
+        classDef accent fill:#131627,stroke:#7c3aed,stroke-width:1px
+        classDef warn fill:#131627,stroke:#f97316,stroke-width:1px
+        class FA accent
+        class K8S warn
+                </div>
+              </div>
+            </div>
+            <div id="qard-screenshot" class="view-pane screenshot-slot">
+              <!-- TODO: Replace with real QARD app screenshot/GIF -->
+              <img src="https://via.placeholder.com/800x500/0d0f1a/64748b?text=QARD+Screenshot+Placeholder"
+                   alt="QARD app screenshot"
+                   loading="lazy"
+                   onerror="this.src='https://via.placeholder.com/800x500/131627/64748b?text=QARD+Screenshot+Placeholder';this.onerror=null;">
+              <small style="display:block;margin-top:0.5rem;color:var(--muted);">Lazy-loaded — replace placeholder with real asset</small>
+            </div>
+            <!-- End Architecture / Screenshot toggle -->
+
+            <!-- Case Study toggle -->
+            <button class="case-study-toggle" data-target="qard-case-study">
+              <span>Read full case study</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" class="chevron-icon"><path d="M6 9l6 6 6-6z"/></svg>
+            </button>
+            <div id="qard-case-study" class="case-study-content">
+              <h4>QARD — End-to-End Case Study</h4>
+
+              <div class="cs-section">
+                <h5>Problem</h5>
+                <p class="cs-placeholder">📝 Content to be provided by Feroz. Replace this placeholder with the real problem statement.</p>
+              </div>
+
+              <div class="cs-section">
+                <h5>Approach &amp; Architecture Decisions</h5>
+                <p>The architecture is shown above — see the <span class="cs-link">Architecture</span> tab. Key decisions will be documented here: multi-tenant isolation strategy, FAISS indexing approach, Kubernetes scaling thresholds, and Stripe/JazzCash payment integration.</p>
+                <p class="cs-placeholder">📝 Replace this placeholder with detailed approach notes and architecture decisions.</p>
+              </div>
+
+              <div class="cs-section">
+                <h5>Key Tradeoff</h5>
+                <p class="cs-placeholder">📝 E.g. FAISS face-matching latency vs. accuracy, or self-hosted vs. managed Kubernetes. Replace with the real tradeoff.</p>
+              </div>
+
+              <div class="cs-section">
+                <h5>Result &amp; Metrics</h5>
+                <ul>
+                  <li>500+ students enrolled across 5+ universities</li>
+                  <li>99.5% uptime with auto-scaling on Kubernetes</li>
+                  <li>50+ ID verification requests processed per week</li>
+                  <li>Eliminated physical ID card queues campus-wide</li>
+                </ul>
+                <p class="cs-placeholder">📝 Add more metrics and qualitative outcomes. Replace this placeholder.</p>
+              </div>
+
+              <div class="cs-section">
+                <h5>What I'd Do Differently</h5>
+                <p class="cs-placeholder">📝 Reflect on technical choices, timeline, team structure, or anything worth changing in hindsight. Replace this placeholder.</p>
               </div>
             </div>
           </div>
@@ -1503,6 +1760,41 @@
             <span class="tech-tag">MLflow</span>
             <span class="tech-tag">Docker</span>
           </div>
+          <!-- Architecture / Screenshot toggle (placeholder mermaid — update syntax as needed) -->
+          <div class="view-toggle">
+            <button class="view-toggle-btn active" data-target="elitecss" data-view="arch">Architecture</button>
+            <button class="view-toggle-btn" data-target="elitecss" data-view="screenshot">Screenshot</button>
+          </div>
+          <div id="elitecss-arch" class="view-pane active">
+            <div class="mermaid-container">
+              <!-- Mermaid diagram: EliteCSS-AI data flow -->
+              <!-- query → routing logic → GPT-4o-mini/Claude/Gemini → SSE stream back to client -->
+              <div class="mermaid">
+flow LR
+    %%{init: {'theme':'dark','themeVariables':{'primaryColor':'#0d0f1a','secondaryColor':'#131627','edgeLabelBackground':'#0d0f1a','fontSize':'12px','primaryTextColor':'#e2e8f0'}}} %%
+    U[👤 User Query] --> R[🔀 Routing Logic]
+    R --> GPT[🤖 GPT-4o-mini]
+    R --> C[🟣 Claude]
+    R --> G[🟡 Gemini]
+    GPT --> S[📡 SSE Stream]
+    C --> S
+    G --> S
+    S --> FE[💻 Client UI]
+    classDef node fill:#0d0f1a,stroke:#00e5ff,stroke-width:1px,color:#e2e8f0
+    classDef accent fill:#131627,stroke:#7c3aed,stroke-width:1px
+    class R,FE node
+    class GPT,C,G accent
+              </div>
+            </div>
+          </div>
+          <div id="elitecss-screenshot" class="view-pane screenshot-slot">
+            <!-- TODO: Replace with real EliteCSS-AI screenshot/GIF -->
+            <img src="https://via.placeholder.com/800x500/0d0f1a/64748b?text=EliteCSS-AI+Screenshot+Placeholder"
+                 alt="EliteCSS-AI chatbot UI screenshot"
+                 loading="lazy"
+                 onerror="this.src='https://via.placeholder.com/800x500/131627/64748b?text=EliteCSS-AI+Screenshot+Placeholder';this.onerror=null;">
+            <small style="display:block;margin-top:0.5rem;color:var(--muted);">Lazy-loaded — replace placeholder with real asset</small>
+          </div>
           <a href="https://github.com/Khan-Feroz211" target="_blank" rel="noopener" class="project-link">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
             GitHub
@@ -1527,6 +1819,39 @@
             <span class="tech-tag">NextAuth.js</span>
             <span class="tech-tag">PWA</span>
             <span class="tech-tag">Tailwind</span>
+          </div>
+          <!-- Architecture / Screenshot toggle (placeholder mermaid — update syntax as needed) -->
+          <div class="view-toggle">
+            <button class="view-toggle-btn active" data-target="nutech" data-view="arch">Architecture</button>
+            <button class="view-toggle-btn" data-target="nutech" data-view="screenshot">Screenshot</button>
+          </div>
+          <div id="nutech-arch" class="view-pane active">
+            <div class="mermaid-container">
+              <!-- Mermaid diagram: Nutech Bus Route data flow -->
+              <!-- GPS device → WebSocket server → client map via Socket.io -->
+              <div class="mermaid">
+flow TD
+    %%{init: {'theme':'dark','themeVariables':{'primaryColor':'#0d0f1a','secondaryColor':'#131627','edgeLabelBackground':'#0d0f1a','fontSize':'12px','primaryTextColor':'#e2e8f0'}}} %%
+    GPS[🛰️ GPS Device<br/>on Bus] --> WS[⚡ WebSocket Server]
+    WS --> SocketIO[📡 Socket.io]
+    SocketIO --> API[🌐 Next.js 14 API]
+    API --> Map[🗺️ Client Map<br/>(React + Google Maps)]
+    WS --> Drivers[👨‍✈️ Driver App]
+    API --> Admin[👩‍💼 Admin Panel]
+    classDef node fill:#0d0f1a,stroke:#00e5ff,stroke-width:1px,color:#e2e8f0
+    classDef accent fill:#131627,stroke:#f97316,stroke-width:1px
+    class GPS,Map node
+    class WS,SocketIO,API,Drivers,Admin accent
+              </div>
+            </div>
+          </div>
+          <div id="nutech-screenshot" class="view-pane screenshot-slot">
+            <!-- TODO: Replace with real Nutech Bus Route screenshot/GIF -->
+            <img src="https://via.placeholder.com/800x500/0d0f1a/64748b?text=Nutech+Bus+Route+Screenshot+Placeholder"
+                 alt="Nutech Bus Route map UI screenshot"
+                 loading="lazy"
+                 onerror="this.src='https://via.placeholder.com/800x500/131627/64748b?text=Nutech+Bus+Route+Screenshot+Placeholder';this.onerror=null;">
+            <small style="display:block;margin-top:0.5rem;color:var(--muted);">Lazy-loaded — replace placeholder with real asset</small>
           </div>
           <a href="https://github.com/Khan-Feroz211/Nutech-Bus-Route" target="_blank" rel="noopener" class="project-link">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
@@ -1613,47 +1938,62 @@
       <p class="section-desc reveal reveal-delay-2">The tools I use to build, ship, and measure production systems.</p>
 
       <div class="skills-grid">
+        <!-- Skills are tiered without fabricated percentages.
+             Core ≥ 85% | Comfortable 75–84% | Exploring < 75%
+             Update tiers as proficiency evolves. -->
 
         <div class="skill-group reveal">
           <div class="skill-group-title">Languages</div>
-          <div class="skill-item"><div class="skill-row"><span class="skill-name">Python</span><span class="skill-pct">95%</span></div><div class="skill-bar"><div class="skill-fill" data-pct="95"></div></div></div>
-          <div class="skill-item"><div class="skill-row"><span class="skill-name">TypeScript</span><span class="skill-pct">80%</span></div><div class="skill-bar"><div class="skill-fill" data-pct="80"></div></div></div>
-          <div class="skill-item"><div class="skill-row"><span class="skill-name">JavaScript</span><span class="skill-pct">82%</span></div><div class="skill-bar"><div class="skill-fill" data-pct="82"></div></div></div>
+          <div class="skill-tier-list">
+            <div class="skill-tier-item"><span class="skill-tier-label">Python</span><span class="skill-tier-tag tier-core">Core</span></div>
+            <div class="skill-tier-item"><span class="skill-tier-label">TypeScript</span><span class="skill-tier-tag tier-comfortable">Comfortable</span></div>
+            <div class="skill-tier-item"><span class="skill-tier-label">JavaScript</span><span class="skill-tier-tag tier-comfortable">Comfortable</span></div>
+          </div>
         </div>
 
         <div class="skill-group reveal reveal-delay-1">
           <div class="skill-group-title">Backend / APIs</div>
-          <div class="skill-item"><div class="skill-row"><span class="skill-name">FastAPI</span><span class="skill-pct">92%</span></div><div class="skill-bar"><div class="skill-fill" data-pct="92"></div></div></div>
-          <div class="skill-item"><div class="skill-row"><span class="skill-name">REST APIs</span><span class="skill-pct">90%</span></div><div class="skill-bar"><div class="skill-fill" data-pct="90"></div></div></div>
-          <div class="skill-item"><div class="skill-row"><span class="skill-name">WebSockets</span><span class="skill-pct">78%</span></div><div class="skill-bar"><div class="skill-fill" data-pct="78"></div></div></div>
+          <div class="skill-tier-list">
+            <div class="skill-tier-item"><span class="skill-tier-label">FastAPI</span><span class="skill-tier-tag tier-core">Core</span></div>
+            <div class="skill-tier-item"><span class="skill-tier-label">REST APIs</span><span class="skill-tier-tag tier-core">Core</span></div>
+            <div class="skill-tier-item"><span class="skill-tier-label">WebSockets</span><span class="skill-tier-tag tier-comfortable">Comfortable</span></div>
+          </div>
         </div>
 
         <div class="skill-group reveal reveal-delay-2">
           <div class="skill-group-title">AI / ML</div>
-          <div class="skill-item"><div class="skill-row"><span class="skill-name">Claude / OpenAI APIs</span><span class="skill-pct">88%</span></div><div class="skill-bar"><div class="skill-fill" data-pct="88"></div></div></div>
-          <div class="skill-item"><div class="skill-row"><span class="skill-name">RAG Pipelines</span><span class="skill-pct">85%</span></div><div class="skill-bar"><div class="skill-fill" data-pct="85"></div></div></div>
-          <div class="skill-item"><div class="skill-row"><span class="skill-name">HuggingFace</span><span class="skill-pct">75%</span></div><div class="skill-bar"><div class="skill-fill" data-pct="75"></div></div></div>
+          <div class="skill-tier-list">
+            <div class="skill-tier-item"><span class="skill-tier-label">Claude / OpenAI APIs</span><span class="skill-tier-tag tier-core">Core</span></div>
+            <div class="skill-tier-item"><span class="skill-tier-label">RAG Pipelines</span><span class="skill-tier-tag tier-core">Core</span></div>
+            <div class="skill-tier-item"><span class="skill-tier-label">HuggingFace</span><span class="skill-tier-tag tier-exploring">Exploring</span></div>
+          </div>
         </div>
 
         <div class="skill-group reveal">
           <div class="skill-group-title">MLOps / Infra</div>
-          <div class="skill-item"><div class="skill-row"><span class="skill-name">Docker</span><span class="skill-pct">88%</span></div><div class="skill-bar"><div class="skill-fill" data-pct="88"></div></div></div>
-          <div class="skill-item"><div class="skill-row"><span class="skill-name">Kubernetes</span><span class="skill-pct">72%</span></div><div class="skill-bar"><div class="skill-fill" data-pct="72"></div></div></div>
-          <div class="skill-item"><div class="skill-row"><span class="skill-name">MLflow</span><span class="skill-pct">82%</span></div><div class="skill-bar"><div class="skill-fill" data-pct="82"></div></div></div>
+          <div class="skill-tier-list">
+            <div class="skill-tier-item"><span class="skill-tier-label">Docker</span><span class="skill-tier-tag tier-core">Core</span></div>
+            <div class="skill-tier-item"><span class="skill-tier-label">Kubernetes</span><span class="skill-tier-tag tier-comfortable">Comfortable</span></div>
+            <div class="skill-tier-item"><span class="skill-tier-label">MLflow</span><span class="skill-tier-tag tier-comfortable">Comfortable</span></div>
+          </div>
         </div>
 
         <div class="skill-group reveal reveal-delay-1">
           <div class="skill-group-title">Frontend / Mobile</div>
-          <div class="skill-item"><div class="skill-row"><span class="skill-name">React / Next.js 14</span><span class="skill-pct">80%</span></div><div class="skill-bar"><div class="skill-fill" data-pct="80"></div></div></div>
-          <div class="skill-item"><div class="skill-row"><span class="skill-name">React Native</span><span class="skill-pct">74%</span></div><div class="skill-bar"><div class="skill-fill" data-pct="74"></div></div></div>
-          <div class="skill-item"><div class="skill-row"><span class="skill-name">Tailwind CSS</span><span class="skill-pct">82%</span></div><div class="skill-bar"><div class="skill-fill" data-pct="82"></div></div></div>
+          <div class="skill-tier-list">
+            <div class="skill-tier-item"><span class="skill-tier-label">React / Next.js 14</span><span class="skill-tier-tag tier-comfortable">Comfortable</span></div>
+            <div class="skill-tier-item"><span class="skill-tier-label">React Native</span><span class="skill-tier-tag tier-exploring">Exploring</span></div>
+            <div class="skill-tier-item"><span class="skill-tier-label">Tailwind CSS</span><span class="skill-tier-tag tier-comfortable">Comfortable</span></div>
+          </div>
         </div>
 
         <div class="skill-group reveal reveal-delay-2">
           <div class="skill-group-title">Databases / Automation</div>
-          <div class="skill-item"><div class="skill-row"><span class="skill-name">PostgreSQL</span><span class="skill-pct">85%</span></div><div class="skill-bar"><div class="skill-fill" data-pct="85"></div></div></div>
-          <div class="skill-item"><div class="skill-row"><span class="skill-name">Redis / FAISS</span><span class="skill-pct">76%</span></div><div class="skill-bar"><div class="skill-fill" data-pct="76"></div></div></div>
-          <div class="skill-item"><div class="skill-row"><span class="skill-name">n8n Automation</span><span class="skill-pct">90%</span></div><div class="skill-bar"><div class="skill-fill" data-pct="90"></div></div></div>
+          <div class="skill-tier-list">
+            <div class="skill-tier-item"><span class="skill-tier-label">PostgreSQL</span><span class="skill-tier-tag tier-core">Core</span></div>
+            <div class="skill-tier-item"><span class="skill-tier-label">Redis / FAISS</span><span class="skill-tier-tag tier-exploring">Exploring</span></div>
+            <div class="skill-tier-item"><span class="skill-tier-label">n8n Automation</span><span class="skill-tier-tag tier-core">Core</span></div>
+          </div>
         </div>
 
       </div>
@@ -1759,21 +2099,40 @@
   </section>
 
   <!-- ═══════════════════════════════════════
+       TESTIMONIAL
+  ═══════════════════════════════════════ -->
+  <!-- TODO: Fill in once you receive a client or university quote -->
+  <div class="container reveal reveal-delay-1" style="margin-bottom:4rem;">
+    <div class="testimonial-card">
+      <p class="testimonial-quote">
+        "Placeholder — waiting for a client or university testimonial. Once you have one, drop the quote text here."
+      </p>
+      <div class="testimonial-author">
+        <span class="testimonial-name">— Waiting for quote</span>
+        <span class="testimonial-title" style="color:var(--muted);">Title / Company — TBD</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════
        GITHUB
   ═══════════════════════════════════════ -->
   <section id="github" style="background:var(--surface);">
     <div class="container">
       <span class="section-label reveal">// github</span>
       <h2 class="section-title reveal reveal-delay-1">GitHub <span>Activity</span></h2>
-      <p class="section-desc reveal reveal-delay-2">Live data pulled from the GitHub API with exponential backoff retry.</p>
+      <p class="section-desc reveal reveal-delay-2">Static stats snapshot — repo/follower counts are hardcoded below and auto-saved hourly via GitHub Actions workflow. <a href="https://github.com/Khan-Feroz211" target="_blank" rel="noopener" style="color:var(--accent);">View full profile →</a></p>
 
-      <div class="gh-stats-row reveal">
+      <!-- Static stat cards (hardcoded — update periodically, ideally via the CI workflow) -->
+      <div class="gh-stats-row reveal reveal-delay-2">
         <div class="gh-stat-card">
-          <div class="gh-stat-num" id="gh-repos">—</div>
+          <!-- TODO: Update via GitHub Actions workflow (currently 41 public repos) -->
+          <div class="gh-stat-num">41</div>
           <div class="gh-stat-label">Public Repos</div>
         </div>
         <div class="gh-stat-card">
-          <div class="gh-stat-num" id="gh-followers">—</div>
+          <!-- TODO: Update periodically (currently 7 followers) -->
+          <div class="gh-stat-num">7</div>
           <div class="gh-stat-label">Followers</div>
         </div>
         <div class="gh-stat-card">
@@ -1786,8 +2145,56 @@
         </div>
       </div>
 
-      <div id="repos-container">
-        <div class="loading-repos">Loading repositories from GitHub API…</div>
+      <!-- Static GitHub contribution graph (ghchart.rshah.org) -->
+      <div class="gh-chart reveal reveal-delay-2">
+        <img src="https://ghchart.rshah.org/35/Khan-Feroz211" alt="GitHub Contribution Graph" loading="lazy" onerror="this.parentElement.innerHTML='<p style=\'color:var(--muted);font-size:0.8rem;\'>Contribution graph temporarily unavailable. <a href=\'https://github.com/Khan-Feroz211\' target=\'_blank\' rel=\'noopener\' style=\'color:var(--accent);\'>View on GitHub →</a></p>\''">
+        <div class="gh-chart-caption">GitHub contribution graph via ghchart.rshah.org</div>
+      </div>
+
+      <!-- Static featured repos (hardcoded — replace with real repo links as needed) -->
+      <div class="repos-grid reveal reveal-delay-2">
+        <a href="https://github.com/Khan-Feroz211/QARD" target="_blank" rel="noopener" class="repo-card">
+          <div class="repo-name">QARD</div>
+          <div class="repo-desc">Pakistan's first multi-tenant virtual student ID SaaS. React Native + FastAPI + FAISS + Kubernetes.</div>
+          <div class="repo-meta">
+            <div class="repo-lang"><span class="lang-dot lang-python"></span> Python</div>
+          </div>
+        </a>
+        <a href="https://github.com/Khan-Feroz211/Nutech-Bus-Route" target="_blank" rel="noopener" class="repo-card">
+          <div class="repo-name">Nutech-Bus-Route</div>
+          <div class="repo-desc">Real-time campus bus tracking SaaS. 2,000+ users. Next.js 14 + Socket.io + Google Maps API.</div>
+          <div class="repo-meta">
+            <div class="repo-lang"><span class="lang-dot lang-ts"></span> TypeScript</div>
+          </div>
+        </a>
+        <a href="https://github.com/Khan-Feroz211/AI-CHATBOT" target="_blank" rel="noopener" class="repo-card">
+          <div class="repo-name">AI-CHATBOT</div>
+          <div class="repo-desc">AI-powered project assistant with vibrant UI. FastAPI + React + LLM APIs.</div>
+          <div class="repo-meta">
+            <div class="repo-lang"><span class="lang-dot lang-python"></span> Python</div>
+          </div>
+        </a>
+        <a href="https://github.com/Khan-Feroz211/MyCyber-Project" target="_blank" rel="noopener" class="repo-card">
+          <div class="repo-name">MyCyber-Project</div>
+          <div class="repo-desc">ML-powered data loss prevention SaaS. HuggingFace + MLflow + Kubernetes.</div>
+          <div class="repo-meta">
+            <div class="repo-lang"><span class="lang-dot lang-python"></span> Python</div>
+          </div>
+        </a>
+        <a href="https://github.com/Khan-Ferooz211/portfolio" target="_blank" rel="noopener" class="repo-card">
+          <div class="repo-name">portfolio</div>
+          <div class="repo-desc">Personal portfolio — GitHub Pages deployable single HTML file.</div>
+          <div class="repo-meta">
+            <div class="repo-lang"><span class="lang-dot lang-html"></span> HTML</div>
+          </div>
+        </a>
+        <a href="https://github.com/Khan-Feroz211/Khan-Feroz211" target="_blank" rel="noopener" class="repo-card">
+          <div class="repo-name">Khan-Feroz211</div>
+          <div class="repo-desc">GitHub profile README — MLOps · SaaS Builder · AI/LLM Systems · Backend Engineer.</div>
+          <div class="repo-meta">
+            <span class="repo-stars" style="font-size:0.68rem;color:var(--muted);"><span style="font-family:var(--font-mono);"> — </span> profile</div>
+          </div>
+        </a>
       </div>
 
       <div style="text-align:center;margin-top:1.5rem;">
@@ -1924,109 +2331,67 @@
 
     document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-    /* ─── SKILL BARS (animate on visible) ─── */
-    const skillObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.querySelectorAll('.skill-fill').forEach(bar => {
-            const pct = bar.dataset.pct;
-            setTimeout(() => { bar.style.width = pct + '%'; }, 100);
-          });
-          skillObserver.unobserve(entry.target);
-        }
+    /* ─── MERMAID INITIALIZATION (dark theme) ─── */
+    if (typeof mermaid !== 'undefined') {
+      mermaid.initialize({
+        startOnLoad: true,
+        theme: 'dark',
+        themeVariables: {
+          primaryColor: '#0d0f1a',
+          secondaryColor: '#131627',
+          tertiaryColor: '#06070d',
+          borderColor: 'rgba(0,229,255,0.12)',
+          primaryTextColor: '#e2e8f0',
+          secondaryTextColor: '#64748b',
+          tertiaryTextColor: '#e2e8f0',
+          fontSize: '12px',
+          fontFamily: 'JetBrains Mono, monospace',
+        },
       });
-    }, { threshold: 0.2 });
+    }
 
-    document.querySelectorAll('.skill-group').forEach(g => skillObserver.observe(g));
+    /* ─── ARCHITECTURE / SCREENSHOT VIEW TOGGLE ─── */
+    document.querySelectorAll('.view-toggle-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const target = btn.dataset.target;
+        const view   = btn.dataset.view;
 
-    /* ─── GITHUB API with fetchWithRetry ─── */
-    const FALLBACK_REPOS = [
-      { name: 'QARD', description: "Pakistan's first multi-tenant virtual student ID SaaS. React Native + FastAPI + FAISS + Kubernetes.", language: 'Python', stargazers_count: 0, html_url: 'https://github.com/Khan-Feroz211/QARD' },
-      { name: 'Nutech-Bus-Route', description: 'Real-time campus bus tracking SaaS. 2,000+ users. Next.js 14 + Socket.io + Google Maps API.', language: 'TypeScript', stargazers_count: 0, html_url: 'https://github.com/Khan-Feroz211/Nutech-Bus-Route' },
-      { name: 'AI-CHATBOT', description: 'AI-powered project assistant with vibrant UI. FastAPI + React + LLM APIs.', language: 'Python', stargazers_count: 0, html_url: 'https://github.com/Khan-Feroz211/AI-CHATBOT' },
-      { name: 'MyCyber-Project', description: 'ML-powered data loss prevention SaaS. HuggingFace + MLflow + Kubernetes.', language: 'Python', stargazers_count: 0, html_url: 'https://github.com/Khan-Feroz211/MyCyber-Project' },
-      { name: 'portfolio', description: 'Personal portfolio — GitHub Pages deployable single HTML file.', language: 'HTML', stargazers_count: 0, html_url: 'https://github.com/Khan-Feroz211/portfolio' },
-      { name: 'Khan-Feroz211', description: 'GitHub profile README — MLOps · SaaS Builder · AI/LLM Systems · Backend Engineer.', language: null, stargazers_count: 0, html_url: 'https://github.com/Khan-Feroz211/Khan-Feroz211' },
-    ];
+        // Update active button state
+        document.querySelectorAll(`.view-toggle-btn[data-target="${target}"]`).forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
 
-    async function fetchWithRetry(url, retries = 3, delay = 1000) {
-      for (let attempt = 0; attempt < retries; attempt++) {
-        try {
-          const res = await fetch(url, {
-            headers: { 'Accept': 'application/vnd.github.v3+json' }
-          });
-          if (res.status === 503 || res.status === 429) {
-            if (attempt < retries - 1) {
-              await new Promise(r => setTimeout(r, delay * (attempt + 1)));
-              continue;
-            }
-            throw new Error(`HTTP ${res.status}`);
+        // Show / hide panes
+        document.querySelectorAll(`[id^="${target}-"]`).forEach(pane => pane.classList.remove('active'));
+        document.getElementById(`${target}-${view}`).classList.add('active');
+
+        // Re-render mermaid when switching to the architecture tab
+        if (view === 'arch') {
+          const pane = document.getElementById(`${target}-arch`);
+          if (pane && typeof mermaid !== 'undefined') {
+            mermaid.contentLoaded();
           }
-          if (!res.ok) throw new Error(`HTTP ${res.status}`);
-          return await res.json();
-        } catch (err) {
-          if (attempt === retries - 1) throw err;
-          await new Promise(r => setTimeout(r, delay * (attempt + 1)));
         }
-      }
-    }
-
-    const LANG_COLORS = {
-      Python: 'lang-python', JavaScript: 'lang-js', TypeScript: 'lang-ts',
-      Java: 'lang-java', Kotlin: 'lang-kotlin', HTML: 'lang-html',
-    };
-
-    function renderRepos(repos) {
-      const container = document.getElementById('repos-container');
-      container.innerHTML = '';
-      const grid = document.createElement('div');
-      grid.className = 'repos-grid';
-      repos.slice(0, 6).forEach(repo => {
-        const langClass = repo.language ? (LANG_COLORS[repo.language] || 'lang-other') : 'lang-other';
-        const card = document.createElement('a');
-        card.href = repo.html_url;
-        card.target = '_blank';
-        card.rel = 'noopener';
-        card.className = 'repo-card reveal';
-        card.innerHTML = `
-          <div class="repo-name">${escHtml(repo.name)}</div>
-          <div class="repo-desc">${escHtml(repo.description || 'No description')}</div>
-          <div class="repo-meta">
-            ${repo.language ? `<div class="repo-lang"><span class="lang-dot ${langClass}"></span>${escHtml(repo.language)}</div>` : ''}
-            <div class="repo-stars">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="var(--muted)"><path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/></svg>
-              ${repo.stargazers_count}
-            </div>
-          </div>`;
-        grid.appendChild(card);
       });
-      container.appendChild(grid);
-      // Trigger reveal for new cards
-      grid.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-    }
+    });
 
-    function escHtml(str) {
-      return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-    }
+    /* ─── CASE STUDY TOGGLE ─── */
+    document.querySelectorAll('.case-study-toggle').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const target  = btn.dataset.target;
+        const content = document.getElementById(target);
+        const isOpen  = content.classList.contains('open');
+        content.classList.toggle('open', !isOpen);
+        btn.classList.toggle('open', !isOpen);
+      });
+    });
 
-    async function loadGitHub() {
-      try {
-        const [user, repos] = await Promise.all([
-          fetchWithRetry('https://api.github.com/users/Khan-Feroz211'),
-          fetchWithRetry('https://api.github.com/users/Khan-Feroz211/repos?sort=updated&per_page=6')
-        ]);
-        document.getElementById('gh-repos').textContent = user.public_repos;
-        document.getElementById('gh-followers').textContent = user.followers;
-        renderRepos(repos);
-      } catch {
-        // Fallback to hardcoded data — page never breaks
-        document.getElementById('gh-repos').textContent = '35+';
-        document.getElementById('gh-followers').textContent = '—';
-        renderRepos(FALLBACK_REPOS);
-      }
-    }
-
-    loadGitHub();
+    /* ─── GITHUB SECTION (static — no live API calls) ───
+       Stat values and repo list are hardcoded in HTML.
+       A GitHub Actions workflow (update-github-stats.yml)
+       can periodically regenerate a JSON file if live data
+       is ever needed again. For now this avoids the 503 /
+       CORS / rate-limit issues on static GitHub Pages.
+    ─── */
 
     /* ─── MOBILE NAV TOGGLE ─── */
     const mobileToggle = document.getElementById('mobileToggle');
