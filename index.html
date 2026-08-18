@@ -15,21 +15,22 @@
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
-      --bg:        #06070d;
-      --surface:   #0d0f1a;
-      --surface2:  #131627;
-      --accent:    #00e5ff;
-      --purple:    #7c3aed;
-      --orange:    #f97316;
-      --text:      #e2e8f0;
-      --muted:     #64748b;
-      --border:    rgba(0,229,255,0.12);
-      --glow-c:    0 0 24px rgba(0,229,255,0.35);
-      --glow-p:    0 0 24px rgba(124,58,237,0.4);
-      --font-head: 'Syne', sans-serif;
-      --font-mono: 'JetBrains Mono', monospace;
-      --radius:    10px;
-      --transition: 0.25s ease;
+      --bg:           #06070d;
+      --surface:      #0d0f1a;
+      --surface2:     #131627;
+      --accent:       #00e5ff;
+      --accent-hover: rgba(0,229,255,0.08);
+      --purple:       #7c3aed;
+      --orange:       #f97316;
+      --text:         #e2e8f0;
+      --muted:        #64748b;
+      --border:       rgba(0,229,255,0.12);
+      --glow-c:       0 0 24px rgba(0,229,255,0.35);
+      --glow-p:       0 0 24px rgba(124,58,237,0.4);
+      --font-head:    'Syne', sans-serif;
+      --font-mono:    'JetBrains Mono', monospace;
+      --radius:       10px;
+      --transition:   0.25s ease;
     }
 
     html { scroll-behavior: smooth; }
@@ -1282,7 +1283,9 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      transition: all var(--transition);
     }
+    .mermaid-container:hover { box-shadow: var(--glow-c); border-color: rgba(0,229,255,0.25); }
     .mermaid-container .mermaid { font-size: 0.9rem; }
 
     .screenshot-slot {
@@ -1295,7 +1298,9 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      transition: all var(--transition);
     }
+    .screenshot-slot:hover { box-shadow: var(--glow-c); border-color: rgba(0,229,255,0.25); }
     .screenshot-slot img { max-width: 100%; height: auto; border-radius: 6px; display: block; }
     .screenshot-placeholder { color: var(--muted); font-size: 0.75rem; text-align: center; }
 
@@ -1308,17 +1313,23 @@
     .skill-tier-item {
       display: flex; justify-content: space-between; align-items: center;
       padding: 0.3rem 0; border-bottom: 1px solid rgba(0,229,255,0.05);
+      transition: background-color var(--transition);
     }
+    .skill-tier-item:hover { background: rgba(0,229,255,0.03); }
     .skill-tier-item:last-child { border-bottom: none; }
     .skill-tier-label { font-family: var(--font-mono); font-size: 0.73rem; color: var(--text); }
     .skill-tier-tag {
       font-size: 0.58rem; padding: 0.15rem 0.55rem; border-radius: 4px;
       text-transform: uppercase; letter-spacing: 0.05em;
       font-family: var(--font-mono); font-weight: 600;
+      transition: all var(--transition);
     }
     .tier-core { background: rgba(0,229,255,0.1); color: var(--accent); border: 1px solid rgba(0,229,255,0.25); }
+    .tier-core:hover { background: rgba(0,229,255,0.15); }
     .tier-comfortable { background: rgba(124,58,237,0.1); color: var(--purple); border: 1px solid rgba(124,58,237,0.25); }
+    .tier-comfortable:hover { background: rgba(124,58,237,0.15); }
     .tier-exploring { background: rgba(249,115,22,0.1); color: var(--orange); border: 1px solid rgba(249,115,22,0.25); }
+    .tier-exploring:hover { background: rgba(249,115,22,0.15); }
 
     /* ═══════════════════════════════════════
        CASE STUDY
@@ -1331,7 +1342,7 @@
       border-radius: 8px; cursor: pointer; margin-top: 1.2rem;
       transition: all var(--transition); width: 100%; text-align: left;
     }
-    .case-study-toggle:hover { background: rgba(0,229,255,0.05); box-shadow: var(--glow-c); }
+    .case-study-toggle:hover { background: var(--accent-hover); box-shadow: var(--glow-c); }
     .case-study-toggle .chevron-icon { margin-left: auto; transition: transform var(--transition); }
     .case-study-toggle.open .chevron-icon { transform: rotate(180deg); }
     .case-study-content {
@@ -1384,9 +1395,9 @@
       color: var(--purple); border: 1px solid var(--purple);
       padding: 0.45rem 1.1rem; border-radius: 5px; transition: all var(--transition);
     }
-    .btn-resume:hover { background: rgba(124,58,237,0.1); box-shadow: var(--glow-p); }
+    .btn-resume:hover { background: rgba(124,58,237,0.12); box-shadow: var(--glow-p); }
     .btn-resume-mobile { color: var(--purple); border-color: var(--purple); }
-    .btn-resume-mobile:hover { background: rgba(124,58,237,0.1); box-shadow: var(--glow-p); }
+    .btn-resume-mobile:hover { background: rgba(124,58,237,0.12); box-shadow: var(--glow-p); }
 
     /* GitHub contribution chart */
     .gh-chart { margin: 2rem 0; text-align: center; }
