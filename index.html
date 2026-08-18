@@ -1648,24 +1648,24 @@
                 <!-- Mobile app → FastAPI backend → FAISS verification → Kubernetes/DB layer -->
                 <div class="mermaid">
 flow TD
-    %%{init: {'theme':'dark','themeVariables':{'primaryColor':'#0d0f1a','secondaryColor':'#131627','tertiaryColor':'#06070d','borderRadius':'10px','fontSize':'12px','primaryTextColor':'#e2e8f0','edgeLabelBackground':'#0d0f1a','tertiaryColor':'#131627'}}} %%
-    subgraph M["📱 Mobile Layer"]
+    %%{init: {'theme':'dark','themeVariables':{'primaryColor':'#0d0f1a','secondaryColor':'#131627','tertiaryColor':'#06070d','borderRadius':'10px','fontSize':'12px','primaryTextColor':'#e2e8f0','edgeLabelBackground':'#0d0f1a'}}} %%
+    subgraph M["Mobile Layer"]
         direction TB
-        RN["React Native<br/>iOS + Android"]
-        Portal["🖥️ React Admin<br/>Portal"]
+        RN["React Native\niOS + Android"]
+        Portal["React Admin\nPortal"]
     end
 
-    subgraph B["⚡ Backend"]
+    subgraph B["Backend"]
         direction TB
-        API["FastAPI<br/>REST + GraphQL"]
-        FA["🔍 FAISS<br/>Face Verification"]
+        API["FastAPI\nREST + GraphQL"]
+        FA["FAISS\nFace Verification"]
     end
 
-    subgraph I["☸️ Infrastructure"]
+    subgraph I["Infrastructure"]
         direction TB
-        K8S["Kubernetes<br/>Auto-scaling"]
-        DB["📊 PostgreSQL<br/>+ Redis"]
-        ML["📈 MLflow<br/>Observability"]
+        K8S["Kubernetes\nAuto-scaling"]
+        DB["PostgreSQL\n+ Redis"]
+        ML["MLflow\nObservability"]
     end
 
     RN -->|API calls| API
@@ -1771,15 +1771,15 @@ flow TD
               <!-- query → routing logic → GPT-4o-mini/Claude/Gemini → SSE stream back to client -->
               <div class="mermaid">
 flow LR
-    %%{init: {'theme':'dark','themeVariables':{'primaryColor':'#0d0f1a','secondaryColor':'#131627','edgeLabelBackground':'#0d0f1a','fontSize':'12px','primaryTextColor':'#e2e8f0'}}} %%
-    U[👤 User Query] --> R[🔀 Routing Logic]
-    R --> GPT[🤖 GPT-4o-mini]
-    R --> C[🟣 Claude]
-    R --> G[🟡 Gemini]
-    GPT --> S[📡 SSE Stream]
+    %%{init: {'theme':'dark','themeVariables':{'primaryColor':'#0d0f1a','secondaryColor':'#131627','borderRadius':'10px','fontSize':'12px','primaryTextColor':'#e2e8f0'}}} %%
+    U["User Query"] --> R["Routing Logic"]
+    R --> GPT["GPT-4o-mini"]
+    R --> C["Claude"]
+    R --> G["Gemini"]
+    GPT --> S["SSE Stream"]
     C --> S
     G --> S
-    S --> FE[💻 Client UI]
+    S --> FE["Client UI"]
     classDef node fill:#0d0f1a,stroke:#00e5ff,stroke-width:1px,color:#e2e8f0
     classDef accent fill:#131627,stroke:#7c3aed,stroke-width:1px
     class R,FE node
@@ -1831,13 +1831,13 @@ flow LR
               <!-- GPS device → WebSocket server → client map via Socket.io -->
               <div class="mermaid">
 flow TD
-    %%{init: {'theme':'dark','themeVariables':{'primaryColor':'#0d0f1a','secondaryColor':'#131627','edgeLabelBackground':'#0d0f1a','fontSize':'12px','primaryTextColor':'#e2e8f0'}}} %%
-    GPS[🛰️ GPS Device<br/>on Bus] --> WS[⚡ WebSocket Server]
-    WS --> SocketIO[📡 Socket.io]
-    SocketIO --> API[🌐 Next.js 14 API]
-    API --> Map[🗺️ Client Map<br/>(React + Google Maps)]
-    WS --> Drivers[👨‍✈️ Driver App]
-    API --> Admin[👩‍💼 Admin Panel]
+    %%{init: {'theme':'dark','themeVariables':{'primaryColor':'#0d0f1a','secondaryColor':'#131627','borderRadius':'10px','fontSize':'12px','primaryTextColor':'#e2e8f0'}}} %%
+    GPS["GPS Device\non Bus"] --> WS["WebSocket Server"]
+    WS --> SocketIO["Socket.io"]
+    SocketIO --> API["Next.js 14 API"]
+    API --> Map["Client Map\n(React + Google Maps)"]
+    WS --> Drivers["Driver App"]
+    API --> Admin["Admin Panel"]
     classDef node fill:#0d0f1a,stroke:#00e5ff,stroke-width:1px,color:#e2e8f0
     classDef accent fill:#131627,stroke:#f97316,stroke-width:1px
     class GPS,Map node
@@ -2336,6 +2336,7 @@ flow TD
       mermaid.initialize({
         startOnLoad: true,
         theme: 'dark',
+        securityLevel: 'loose',
         themeVariables: {
           primaryColor: '#0d0f1a',
           secondaryColor: '#131627',
