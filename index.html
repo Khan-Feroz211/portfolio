@@ -1682,9 +1682,9 @@ graph TD
     RN -->|API calls| API
     Portal -->|Admin API| API
     API -->|Face vectors| FA
-    API -->|Orchestration| K8S
+    API -->|Persist data| DB
     FA -->|Vectors| DB
-    K8S -->|Persist data| DB
+    K8S -.->|Hosts & scales| API
     K8S -->|Metrics| ML
         classDef default fill:#0d0f1a,stroke:#00e5ff,stroke-width:1px
         classDef accent fill:#131627,stroke:#7c3aed,stroke-width:1px
@@ -1700,50 +1700,8 @@ graph TD
                    alt="QARD app screenshot"
                    loading="lazy"
                    onerror="this.src='https://via.placeholder.com/800x500/131627/64748b?text=QARD+Screenshot+Placeholder';this.onerror=null;">
-              <small style="display:block;margin-top:0.5rem;color:var(--muted);">Lazy-loaded — replace placeholder with real asset</small>
             </div>
             <!-- End Architecture / Screenshot toggle -->
-
-            <!-- Case Study toggle -->
-            <button class="case-study-toggle" data-target="qard-case-study">
-              <span>Read full case study</span>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" class="chevron-icon"><path d="M6 9l6 6 6-6z"/></svg>
-            </button>
-            <div id="qard-case-study" class="case-study-content">
-              <h4>QARD — End-to-End Case Study</h4>
-
-              <div class="cs-section">
-                <h5>Problem</h5>
-                <p class="cs-placeholder">📝 Content to be provided by Feroz. Replace this placeholder with the real problem statement.</p>
-              </div>
-
-              <div class="cs-section">
-                <h5>Approach &amp; Architecture Decisions</h5>
-                <p>The architecture is shown above — see the <span class="cs-link">Architecture</span> tab. Key decisions will be documented here: multi-tenant isolation strategy, FAISS indexing approach, Kubernetes scaling thresholds, and Stripe/JazzCash payment integration.</p>
-                <p class="cs-placeholder">📝 Replace this placeholder with detailed approach notes and architecture decisions.</p>
-              </div>
-
-              <div class="cs-section">
-                <h5>Key Tradeoff</h5>
-                <p class="cs-placeholder">📝 E.g. FAISS face-matching latency vs. accuracy, or self-hosted vs. managed Kubernetes. Replace with the real tradeoff.</p>
-              </div>
-
-              <div class="cs-section">
-                <h5>Result &amp; Metrics</h5>
-                <ul>
-                  <li>500+ students enrolled across 5+ universities</li>
-                  <li>99.5% uptime with auto-scaling on Kubernetes</li>
-                  <li>50+ ID verification requests processed per week</li>
-                  <li>Eliminated physical ID card queues campus-wide</li>
-                </ul>
-                <p class="cs-placeholder">📝 Add more metrics and qualitative outcomes. Replace this placeholder.</p>
-              </div>
-
-              <div class="cs-section">
-                <h5>What I'd Do Differently</h5>
-                <p class="cs-placeholder">📝 Reflect on technical choices, timeline, team structure, or anything worth changing in hindsight. Replace this placeholder.</p>
-              </div>
-            </div>
           </div>
         </div>
       </div>
@@ -1783,7 +1741,8 @@ graph TD
               <div class="mermaid">
 graph LR
     %%{init: {'theme':'dark','themeVariables':{'primaryColor':'#0d0f1a','secondaryColor':'#131627','borderRadius':'10px','fontSize':'12px','primaryTextColor':'#e2e8f0'}}} %%
-    U["User Query"] --> R["Routing Logic"]
+    U["User Query"] --> RG["RAG Retrieval"]
+    RG --> R["Routing Logic"]
     R --> GPT["GPT-4o-mini"]
     R --> C["Claude"]
     R --> G["Gemini"]
@@ -1804,7 +1763,6 @@ graph LR
                  alt="EliteCSS-AI chatbot UI screenshot"
                  loading="lazy"
                  onerror="this.src='https://via.placeholder.com/800x500/131627/64748b?text=EliteCSS-AI+Screenshot+Placeholder';this.onerror=null;">
-            <small style="display:block;margin-top:0.5rem;color:var(--muted);">Lazy-loaded — replace placeholder with real asset</small>
           </div>
           <a href="https://github.com/Khan-Feroz211" target="_blank" rel="noopener" class="project-link">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
@@ -1862,7 +1820,6 @@ graph TD
                  alt="Nutech Bus Route map UI screenshot"
                  loading="lazy"
                  onerror="this.src='https://via.placeholder.com/800x500/131627/64748b?text=Nutech+Bus+Route+Screenshot+Placeholder';this.onerror=null;">
-            <small style="display:block;margin-top:0.5rem;color:var(--muted);">Lazy-loaded — replace placeholder with real asset</small>
           </div>
           <a href="https://github.com/Khan-Feroz211/Nutech-Bus-Route" target="_blank" rel="noopener" class="project-link">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
@@ -2108,22 +2065,6 @@ graph TD
       </div>
     </div>
   </section>
-
-  <!-- ═══════════════════════════════════════
-       TESTIMONIAL
-  ═══════════════════════════════════════ -->
-  <!-- TODO: Fill in once you receive a client or university quote -->
-  <div class="container reveal reveal-delay-1" style="margin-bottom:4rem;">
-    <div class="testimonial-card">
-      <p class="testimonial-quote">
-        "Placeholder — waiting for a client or university testimonial. Once you have one, drop the quote text here."
-      </p>
-      <div class="testimonial-author">
-        <span class="testimonial-name">— Waiting for quote</span>
-        <span class="testimonial-title" style="color:var(--muted);">Title / Company — TBD</span>
-      </div>
-    </div>
-  </div>
 
   <!-- ═══════════════════════════════════════
        GITHUB
