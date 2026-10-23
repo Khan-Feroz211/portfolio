@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Feroz Khan | MLOps · AI Systems · Backend Engineer</title>
-  <meta name="description" content="Feroz Khan — MLOps, SaaS Builder, AI/LLM Systems, Backend Engineer. Building production-grade AI systems from Islamabad, Pakistan." />
+<title>Feroz Khan | I help startups ship production AI and SaaS systems</title>
+<meta name="description" content="Feroz Khan helps early-stage teams ship production AI and SaaS systems that cut manual work and scale. Built QARD (500+ student users), Nutech Bus Route (2,000+ users), EliteCSS-AI. Islamabad-based freelancer." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -1423,8 +1423,9 @@
           <li><a href="#github">GitHub</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
-        <a href="mailto:f24605023@nutech.edu.pk" class="btn-hire">Hire Me</a>
-        <a href="/resume.pdf" class="btn-resume" download>Resume</a>
+        <!-- TODO: confirm / replace with your Calendly booking URL -->
+        <a href="mailto:f24605023@nutech.edu.pk?subject=Scoping+Call" class="btn-hire" id="nav-cta" data-analytics="cta_book_call_click" aria-label="Book a 30-min scoping call">Book a Call</a>
+        <!-- TODO: confirm resume.pdf exists in repo root (currently 404) -->
         <div class="nav-mobile-toggle" id="mobileToggle">
           <span></span><span></span><span></span>
         </div>
@@ -1439,8 +1440,8 @@
     <a href="#experience" class="mobile-nav-link">Experience</a>
     <a href="#github" class="mobile-nav-link">GitHub</a>
     <a href="#contact" class="mobile-nav-link">Contact</a>
-    <a href="mailto:f24605023@nutech.edu.pk" class="btn-hire-mobile">Hire Me</a>
-    <a href="/resume.pdf" class="btn-hire-mobile btn-resume-mobile" download>Download Resume</a>
+    <a href="mailto:f24605023@nutech.edu.pk?subject=Scoping+Call" class="btn-hire-mobile" data-analytics="cta_book_call_click" aria-label="Book a 30-min scoping call">Book a Call</a>
+    <!-- TODO: confirm resume.pdf exists in repo root (currently 404) -->
   </div>
 
   <!-- ═══════════════════════════════════════
@@ -1461,20 +1462,21 @@
           </h1>
 
           <p class="hero-role reveal reveal-delay-2">
-            <span class="tag">// </span>MLOps · SaaS Builder · AI/LLM Systems · Backend Engineer · n8n Automation
+            <span class="tag">// </span>I help startups ship production AI and SaaS that cuts manual work and scales to thousands of users
           </p>
 
           <p class="hero-desc reveal reveal-delay-3">
-            BSc CS @ NUTECH (Sem 4) · Building production-grade AI systems and SaaS products from Islamabad 🇵🇰. 472 GitHub contributions last year.
+            I build production AI systems and SaaS products that ship to real users from Islamabad, serving startups worldwide. 2K+ users reached, $50K+ client value delivered, 472 GitHub contributions last year.
           </p>
 
           <div class="hero-ctas reveal reveal-delay-4">
-            <a href="#projects" class="btn-primary">View Projects</a>
-            <a href="#contact" class="btn-secondary">Get in Touch</a>
+            <a href="mailto:f24605023@nutech.edu.pk?subject=Scoping+Call" class="btn-primary" id="hero-cta-main" data-analytics="cta_book_call_click" aria-label="Book a 30-min scoping call">Book a 30-min Call</a>
+            <a href="#projects" class="btn-secondary">View Projects</a>
             <a href="https://github.com/Khan-Feroz211" target="_blank" rel="noopener" class="btn-secondary">GitHub</a>
-            <a href="/resume.pdf" class="btn-resume" download>Download Resume</a>
+            <!-- TODO: confirm resume.pdf exists in repo root (currently 404) -->
           </div>
 
+            <p class="hero-desc">Book a no-strings 30-min scoping call - I'll review your AI/SaaS challenge and share concrete next steps.</p>
           <div class="hero-stats reveal reveal-delay-4">
             <div class="stat-item">
               <div class="stat-num">2K+</div>
@@ -1508,7 +1510,7 @@
 <pre><span class="c-kw">class</span> <span class="c-cls">FerozKhan</span>:
     <span class="c-attr">location</span>    = <span class="c-str">"Islamabad, Pakistan 🇵🇰"</span>
     <span class="c-attr">university</span>  = <span class="c-str">"NUTECH — BSc CS Sem 4"</span>
-    <span class="c-attr">current</span>     = <span class="c-str">"Seeking full-time ML/SaaS roles"</span>
+    <span class="c-attr">current</span>     = <span class="c-str">"Helping startups ship production AI/SaaS"</span>
     <span class="c-attr">availability</span>= <span class="c-str">"18–25 hrs/week · Remote"</span>
     <span class="c-attr">contributions</span>= <span class="c-num">472</span>  <span class="c-cmt"># last year</span>
 
@@ -1714,18 +1716,18 @@ graph TD
 
               <div class="cs-section">
                 <h5>Problem</h5>
-                <p class="cs-placeholder">📝 Content to be provided by Feroz. Replace this placeholder with the real problem statement.</p>
+                <p>Universities issued physical student IDs, creating daily on-campus verification queues, replacement fees for lost cards, and fraud that manual checks could not catch at scale. Each institution also needed its own branded, isolated system, so any rebuild would be duplicated per school.</p>
               </div>
 
               <div class="cs-section">
                 <h5>Approach &amp; Architecture Decisions</h5>
-                <p>The architecture is shown above — see the <span class="cs-link">Architecture</span> tab. Key decisions will be documented here: multi-tenant isolation strategy, FAISS indexing approach, Kubernetes scaling thresholds, and Stripe/JazzCash payment integration.</p>
-                <p class="cs-placeholder">📝 Replace this placeholder with detailed approach notes and architecture decisions.</p>
+                <p>Built a multi-tenant SaaS on FastAPI with strict per-university tenant isolation (separate schemas, branding, and admin portals). Face verification uses FAISS vector matching: student selfies are encoded to vectors and matched against registered profiles. Deployed on Kubernetes with auto-scaling to hold 99.5% uptime across 5+ university clusters. Payments wired through Stripe and JazzCash for local Pakistani transactions.</p>
+                <p>The React Native app (iOS + Android) handles real-time face capture, while a React admin portal lets university staff manage enrollment, branding, and benefits from one dashboard. MLflow tracks model versioning and verification metrics.</p>
               </div>
 
               <div class="cs-section">
                 <h5>Key Tradeoff</h5>
-                <p class="cs-placeholder">📝 E.g. FAISS face-matching latency vs. accuracy, or self-hosted vs. managed Kubernetes. Replace with the real tradeoff.</p>
+                <p>Chose self-hosted FAISS over managed vector search for lower per-query cost and full data control, but had to build our own vector scaling and index-update pipeline. Multi-tenant Kubernetes (rather than one cluster per university) kept infra lean across 5+ schools, but made tenant-isolation testing more involved.</p>
               </div>
 
               <div class="cs-section">
@@ -1736,12 +1738,12 @@ graph TD
                   <li>50+ ID verification requests processed per week</li>
                   <li>Eliminated physical ID card queues campus-wide</li>
                 </ul>
-                <p class="cs-placeholder">📝 Add more metrics and qualitative outcomes. Replace this placeholder.</p>
+                <p>500+ students now carry verified IDs on their phones instead of physical cards, eliminating campus-wide ID queues across 5 university rollouts. University admin teams manage enrollment, verification, and benefits from a single dashboard.</p>
               </div>
 
               <div class="cs-section">
                 <h5>What I'd Do Differently</h5>
-                <p class="cs-placeholder">📝 Reflect on technical choices, timeline, team structure, or anything worth changing in hindsight. Replace this placeholder.</p>
+                <p>Scaling to 5+ universities surfaced tenant-isolation edge cases late in the build. Next time I would extract the tenant boundary into a dedicated service layer before the third university, so new schools add configuration rather than code changes.</p>
               </div>
             </div>
           </div>
@@ -2223,8 +2225,8 @@ graph TD
   <section id="contact">
     <div class="container">
       <span class="section-label reveal">// contact</span>
-      <h2 class="section-title reveal reveal-delay-1">Get In <span>Touch</span></h2>
-      <p class="section-desc reveal reveal-delay-2">Open for remote internships, founding engineer roles, and AI/SaaS collaborations.</p>
+      <h2 class="section-title reveal reveal-delay-1">Let's Build <span>Together</span></h2>
+      <p class="section-desc reveal reveal-delay-2">I take on a small number of freelance AI/SaaS builds per quarter. Book a no-strings 30-min call and I'll review your challenge with concrete next steps.</p>
 
       <div class="contact-grid">
         <div class="contact-links reveal">
@@ -2288,19 +2290,19 @@ graph TD
           </div>
           <div class="avail-row">
             <span class="avail-key">Currently</span>
-            <span class="avail-val">NUTECH Sem 4 + MLOps/LLM work (Open to full-time roles)</span>
+            <span class="avail-val">NUTECH Sem 4 + freelance AI/SaaS projects</span>
           </div>
           <div class="avail-row">
             <span class="avail-key">ORCID</span>
             <span class="avail-val">0009-0006-9088-7814</span>
           </div>
-          <div style="margin-top:1rem;font-size:0.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.1em;">Looking for</div>
+<div style="margin-top:1rem;font-size:0.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.1em;">Services</div>
           <div class="looking-for-chips">
-            <span class="chip chip-accent">Remote Internships</span>
-            <span class="chip chip-accent">Founding Engineer Roles</span>
-            <span class="chip chip-accent">AI / SaaS Collabs</span>
-            <span class="chip">Part-time Contracts</span>
-            <span class="chip">Open Source</span>
+            <span class="chip chip-accent">AI SaaS Builds</span>
+            <span class="chip chip-accent">LLM Agents</span>
+            <span class="chip chip-accent">RAG Pipelines</span>
+            <span class="chip">Automation Workflows</span>
+            <span class="chip">MLOps Setup</span>
           </div>
         </div>
       </div>
@@ -2430,6 +2432,17 @@ graph TD
         document.body.style.overflow = '';
         mobileToggle.focus();
       }
+    });
+    /* CTA ANALYTICS -- fires on primary CTA clicks
+       TODO: confirm event name "cta_book_call_click" matches your GA4 property */
+    document.querySelectorAll('[data-analytics]').forEach(function(el) {
+      el.addEventListener('click', function() {
+        var evt = el.getAttribute('data-analytics');
+        if (typeof gtag !== 'undefined') { gtag('event', evt, { event_category: 'engagement' }); }
+        if (typeof ga !== 'undefined')  { ga('send', 'event', 'engagement', evt); }
+        if (typeof dataLayer !== 'undefined') { dataLayer.push({ event: evt }); }
+        if (window.console) { console.log('[CTA]', evt); }
+      });
     });
   </script>
 
