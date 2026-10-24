@@ -168,7 +168,7 @@
     }
     .nav-links a:hover { color: var(--accent); }
 
-    .btn-hire {
+    .btn-cta {
       font-family: var(--font-mono);
       font-size: 0.75rem;
       font-weight: 600;
@@ -180,7 +180,7 @@
       border-radius: 5px;
       transition: background var(--transition), box-shadow var(--transition);
     }
-    .btn-hire:hover {
+    .btn-cta:hover {
       background: rgba(0,229,255,0.1);
       box-shadow: var(--glow-c);
     }
@@ -202,7 +202,7 @@
     }
 
     @media (max-width: 768px) {
-      .nav-links, .btn-hire { display: none; }
+      .nav-links, .btn-cta { display: none; }
       .nav-mobile-toggle { display: flex; }
     }
 
@@ -242,7 +242,7 @@
       transition: color var(--transition);
     }
     .nav-mobile-menu a:hover { color: var(--accent); }
-    .nav-mobile-menu .btn-hire-mobile {
+    .nav-mobile-menu .btn-cta-mobile {
       font-family: var(--font-mono);
       font-size: 0.85rem;
       font-weight: 600;
@@ -255,7 +255,7 @@
       margin-top: 0.5rem;
       transition: background var(--transition), box-shadow var(--transition);
     }
-    .nav-mobile-menu .btn-hire-mobile:hover {
+    .nav-mobile-menu .btn-cta-mobile:hover {
       background: rgba(0,229,255,0.1);
       box-shadow: var(--glow-c);
     }
@@ -1369,7 +1369,6 @@
       position: relative; margin-bottom: 0.3rem; line-height: 1.7;
     }
     .cs-section ul li::before { content: '→'; position: absolute; left: 0; color: var(--accent); }
-    .cs-placeholder { color: var(--muted); font-style: italic; font-size: 0.78rem; text-align: center; padding: 1.5rem; }
     .cs-link { color: var(--accent); text-decoration: underline; font-size: 0.78rem; }
 
     /* ═══════════════════════════════════════
@@ -1424,7 +1423,7 @@
           <li><a href="#contact">Contact</a></li>
         </ul>
         <!-- TODO: confirm / replace with your Calendly booking URL -->
-        <a href="mailto:f24605023@nutech.edu.pk?subject=Scoping+Call" class="btn-hire" id="nav-cta" data-analytics="cta_book_call_click" aria-label="Book a 30-min scoping call">Book a Call</a>
+        <a href="mailto:f24605023@nutech.edu.pk?subject=Scoping+Call" class="btn-cta" id="nav-cta" data-analytics="cta_book_call_click" aria-label="Book a 30-min scoping call">Book a Call</a>
         <!-- TODO: confirm resume.pdf exists in repo root (currently 404) -->
         <div class="nav-mobile-toggle" id="mobileToggle">
           <span></span><span></span><span></span>
@@ -1440,7 +1439,7 @@
     <a href="#experience" class="mobile-nav-link">Experience</a>
     <a href="#github" class="mobile-nav-link">GitHub</a>
     <a href="#contact" class="mobile-nav-link">Contact</a>
-    <a href="mailto:f24605023@nutech.edu.pk?subject=Scoping+Call" class="btn-hire-mobile" data-analytics="cta_book_call_click" aria-label="Book a 30-min scoping call">Book a Call</a>
+    <a href="mailto:f24605023@nutech.edu.pk?subject=Scoping+Call" class="btn-cta-mobile" data-analytics="cta_book_call_click" aria-label="Book a 30-min scoping call">Book a Call</a>
     <!-- TODO: confirm resume.pdf exists in repo root (currently 404) -->
   </div>
 
